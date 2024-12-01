@@ -3,53 +3,82 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     transition: background-color 0.3s, color 0.3s;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
+/* Transition for smooth background-color change */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Centering the app's content */
+.App {
+    width: 100%;
+    max-width: 1200px; /* Maximum width of the content */
+    padding: 20px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* Light Mode */
 body.light-mode {
     background-color: #f9f9f9;
     color: #333;
 }
 
+/* Dark Mode */
 body.dark-mode {
     background-color: #121212;
     color: #f4f4f4;
 }
 
-/* Button Styling */
+/* General Button Styles */
 button {
-    cursor: pointer;
-    padding: 15px 30px;
-    border-radius: 8px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
     font-size: 1.2em;
+    cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     border: none;
     font-weight: bold;
 }
 
+/* Light Mode Buttons */
 button.light-mode {
     background-color: #007bff;
     color: white;
 }
 
+button.light-mode:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode Buttons */
 button.dark-mode {
     background-color: #28a745;
     color: white;
-}
-
-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
 }
 
 button.dark-mode:hover {
     background-color: #218838;
 }
 
+/* Focus and Hover Effects */
+button:hover {
+    transform: scale(1.05);
+}
+
 button:focus {
     outline: none;
 }
-
 /* Input Fields */
 input, select {
     padding: 10px;
@@ -61,16 +90,19 @@ input, select {
     transition: border-color 0.3s ease;
 }
 
-input:focus, select:focus {
-    border-color: #007bff;
-}
-
+/* Light Mode Input Fields */
 input.light-mode, select.light-mode {
     background-color: #ffffff;
     color: #333;
 }
 
+/* Dark Mode Input Fields */
 input.dark-mode, select.dark-mode {
     background-color: #333;
     color: #f4f4f4;
+}
+
+/* Focus Effects for Inputs */
+input:focus, select:focus {
+    border-color: #007bff;
 }

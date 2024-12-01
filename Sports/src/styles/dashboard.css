@@ -1,4 +1,5 @@
 .dashboard-container {
+    width: 100%;
     max-width: 900px;
     margin: 50px auto;
     padding: 20px;
@@ -11,11 +12,13 @@
 .dashboard-container h1 {
     font-size: 2.5em;
     font-weight: 600;
+    color: #007bff;
 }
 
 .dashboard-container p {
     font-size: 1.2em;
     margin: 20px 0;
+    color: #555;
 }
 
 .dashboard-options {
