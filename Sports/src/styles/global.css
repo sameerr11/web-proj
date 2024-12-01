@@ -1,19 +1,76 @@
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
+body.light-mode {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #f4f4f4;
+}
+
+/* Button Styling */
 button {
+    cursor: pointer;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    font-weight: bold;
+}
+
+button.light-mode {
     background-color: #007bff;
     color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+}
+
+button.dark-mode {
+    background-color: #28a745;
+    color: white;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button.dark-mode:hover {
+    background-color: #218838;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Input Fields */
+input, select {
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+}
+
+input.light-mode, select.light-mode {
+    background-color: #ffffff;
+    color: #333;
+}
+
+input.dark-mode, select.dark-mode {
+    background-color: #333;
+    color: #f4f4f4;
 }

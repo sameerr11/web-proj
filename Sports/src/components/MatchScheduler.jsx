@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/match-scheduler.css';
 
 function MatchScheduler() {
     const [teams, setTeams] = useState([]);
@@ -27,11 +28,11 @@ function MatchScheduler() {
     };
 
     return (
-        <div className="match-scheduler">
+        <div className="match-scheduler-container">
             <h2>Schedule a Match</h2>
             <form onSubmit={scheduleMatch}>
-                <label>
-                    Team A:
+                <div className="form-group">
+                    <label>Team A:</label>
                     <select
                         value={match.teamA}
                         onChange={(e) => setMatch({ ...match, teamA: e.target.value })}
@@ -44,9 +45,9 @@ function MatchScheduler() {
                             </option>
                         ))}
                     </select>
-                </label>
-                <label>
-                    Team B:
+                </div>
+                <div className="form-group">
+                    <label>Team B:</label>
                     <select
                         value={match.teamB}
                         onChange={(e) => setMatch({ ...match, teamB: e.target.value })}
@@ -59,27 +60,38 @@ function MatchScheduler() {
                             </option>
                         ))}
                     </select>
-                </label>
-                <input
-                    type="text"
-                    placeholder="Venue"
-                    value={match.venue}
-                    onChange={(e) => setMatch({ ...match, venue: e.target.value })}
-                    required
-                />
-                <input
-                    type="date"
-                    value={match.date}
-                    onChange={(e) => setMatch({ ...match, date: e.target.value })}
-                    required
-                />
-                <input
-                    type="time"
-                    value={match.time}
-                    onChange={(e) => setMatch({ ...match, time: e.target.value })}
-                    required
-                />
-                <button type="submit">Schedule Match</button>
+                </div>
+                <div className="form-group">
+                    <label>Venue:</label>
+                    <input
+                        type="text"
+                        placeholder="Venue"
+                        value={match.venue}
+                        onChange={(e) => setMatch({ ...match, venue: e.target.value })}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Date:</label>
+                    <input
+                        type="date"
+                        value={match.date}
+                        onChange={(e) => setMatch({ ...match, date: e.target.value })}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Time:</label>
+                    <input
+                        type="time"
+                        value={match.time}
+                        onChange={(e) => setMatch({ ...match, time: e.target.value })}
+                        required
+                    />
+                </div>
+                <button type="submit" className="match-button">
+                    Schedule Match
+                </button>
             </form>
         </div>
     );

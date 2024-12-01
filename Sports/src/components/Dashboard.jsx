@@ -3,9 +3,9 @@ import '../styles/dashboard.css';
 
 function Dashboard() {
     return (
-        <div className="dashboard">
+        <div className="dashboard-container">
             <h1>Welcome to My Sports Manager</h1>
-            <p>Manage your teams, schedule matches, and more.</p>
+            <p>Manage your teams, schedule matches, and view sports grounds.</p>
             <div className="dashboard-options">
                 <button className="dashboard-button">Team Management</button>
                 <button className="dashboard-button">Match Scheduling</button>
