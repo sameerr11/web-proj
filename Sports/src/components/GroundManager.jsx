@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-function Grounds() {
+function GroundManager() {
     const [grounds, setGrounds] = useState([]);
     const [newGround, setNewGround] = useState({ name: '', location: '', capacity: '', facilities: '' });
 
     useEffect(() => {
         fetch('/api/grounds')
-            .then(res => res.json())
-            .then(data => setGrounds(data));
+            .then((res) => res.json())
+            .then((data) => setGrounds(data));
     }, []);
 
     const addGround = async (e) => {
@@ -17,18 +17,19 @@ function Grounds() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 ...newGround,
-                facilities: newGround.facilities.split(',').map(facility => facility.trim()),
+                facilities: newGround.facilities.split(',').map((f) => f.trim()),
             }),
         });
+
         if (response.ok) {
-            const newGroundData = await response.json();
-            setGrounds([...grounds, newGroundData]);
+            const addedGround = await response.json();
+            setGrounds([...grounds, addedGround]);
             setNewGround({ name: '', location: '', capacity: '', facilities: '' });
         }
     };
 
     return (
-        <div className="grounds">
+        <div className="ground-manager">
             <h2>Manage Grounds</h2>
             <form onSubmit={addGround}>
                 <input
@@ -61,7 +62,7 @@ function Grounds() {
             </form>
             <ul>
                 {grounds.map((ground) => (
-                    <li key={ground._id}>
+                    <li key={ground._id} className="ground-item">
                         <h3>{ground.name}</h3>
                         <p>Location: {ground.location}</p>
                         <p>Capacity: {ground.capacity || 'N/A'}</p>
@@ -73,4 +74,4 @@ function Grounds() {
     );
 }
 
-export default Grounds;
+export default GroundManager;

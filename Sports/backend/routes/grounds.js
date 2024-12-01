@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     res.json(grounds);
 });
 
-// Add a new ground
+// Add a ground
 router.post('/', async (req, res) => {
     const ground = new Ground(req.body);
     await ground.save();

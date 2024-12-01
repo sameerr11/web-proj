@@ -1,0 +1,48 @@
+.match-scheduler {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.match-scheduler h2 {
+    font-size: 2em;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.match-scheduler form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.match-scheduler label {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.match-scheduler input,
+.match-scheduler select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.match-scheduler button {
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.match-scheduler button:hover {
+    background-color: #218838;
+}

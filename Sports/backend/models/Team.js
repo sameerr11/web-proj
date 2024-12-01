@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const TeamSchema = new mongoose.Schema({
-    name: String,
+    name: { type: String, required: true },
     players: [
         {
-            name: String,
-            age: Number,
-            position: String,
-            stats: String,
+            name: { type: String, required: true },
+            age: { type: Number, required: true },
+            position: { type: String, required: true },
+            stats: { type: Object, default: {} },
         },
     ],
-});
+}, { timestamps: true }); // Add timestamps for createdAt and updatedAt
 
 module.exports = mongoose.model('Team', TeamSchema);

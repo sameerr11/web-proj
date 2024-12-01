@@ -1,0 +1,37 @@
+.team-manager {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.fetch-teams {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.fetch-teams:hover {
+    background-color: #218838;
+}
+
+.team-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.team-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.team-item h3 {
+    color: #007bff;
+}

@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     res.json(teams);
 });
 
-// Add a new team
+// Add a team
 router.post('/', async (req, res) => {
     const team = new Team(req.body);
     await team.save();

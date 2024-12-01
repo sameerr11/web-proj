@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     res.json(matches);
 });
 
-// Add a new match
+// Add a match
 router.post('/', async (req, res) => {
     const match = new Match(req.body);
     await match.save();

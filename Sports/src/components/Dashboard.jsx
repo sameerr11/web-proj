@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import './styles/dashboard.css';
 
 function Dashboard() {
-    const [teams, setTeams] = useState([]);
-
-    useEffect(() => {
-        fetch('/api/teams')
-            .then(res => res.json())
-            .then(data => setTeams(data));
-    }, []);
-
     return (
-        <div>
-            <h1>My Sports Manager Dashboard</h1>
-            <h2>Teams</h2>
-            <ul>
-                {teams.map(team => (
-                    <li key={team._id}>{team.name}</li>
-                ))}
-            </ul>
+        <div className="dashboard">
+            <h1>Welcome to My Sports Manager</h1>
+            <p>Manage your teams, schedule matches, and more.</p>
+            <div className="dashboard-options">
+                <button className="dashboard-button">Team Management</button>
+                <button className="dashboard-button">Match Scheduling</button>
+                <button className="dashboard-button">Ground Management</button>
+                <button className="dashboard-button">E-commerce</button>
+            </div>
         </div>
     );
 }
