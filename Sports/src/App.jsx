@@ -1,22 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import './App.css';
+import Dashboard from './components/Dashboard';
 
-const App = () => {
-    const [message, setMessage] = useState('');
-
-    useEffect(() => {
-        // Ensure the API endpoint matches the backend route
-        axios.get('/api/')
-            .then(response => setMessage(response.data))
-            .catch(error => console.error('Error fetching data:', error));
-    }, []);
-
+function App() {
     return (
-        <div>
-            <h1>Frontend-Backend Integration</h1>
-            <p>{message}</p>
+        <div className="App">
+            <Dashboard />
         </div>
     );
-};
+}
 
 export default App;
