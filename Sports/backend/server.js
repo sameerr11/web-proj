@@ -23,3 +23,6 @@ app.use('/api/teams', teamRoutes);
 app.use('/api/matches', matchRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+const groundRoutes = require('./routes/grounds');
+app.use('/api/grounds', groundRoutes);
