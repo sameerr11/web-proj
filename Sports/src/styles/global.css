@@ -7,14 +7,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    transition: background-color 0.3s, color 0.3s;
+    flex-direction: column; /* Ensures the content is vertically aligned */
+    transition: background-color 0.3s ease, color 0.3s ease;
     background-color: #f9f9f9;
     color: #333;
-}
-
-/* Transition for smooth background-color change */
-body {
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Centering the app's content */
@@ -46,7 +42,7 @@ button {
     border-radius: 5px;
     font-size: 1.2em;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
     border: none;
     font-weight: bold;
 }
@@ -79,6 +75,7 @@ button:hover {
 button:focus {
     outline: none;
 }
+
 /* Input Fields */
 input, select {
     padding: 10px;
@@ -87,7 +84,7 @@ input, select {
     border-radius: 5px;
     border: 1px solid #ddd;
     width: 100%;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 /* Light Mode Input Fields */

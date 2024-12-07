@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate for routing
 
 function Register() {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();  // Initialize useNavigate
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,8 +19,14 @@ function Register() {
                 body: JSON.stringify(formData),
             });
             const data = await response.json();
-            if (response.ok) setMessage('Registration successful!');
-            else setMessage(data.msg);
+            if (response.ok) {
+                setMessage('Registration successful!');
+                setTimeout(() => {
+                    navigate('/login');  // Redirect to login page after 3 seconds
+                }, 3000);
+            } else {
+                setMessage(data.msg || 'Registration failed');
+            }
         } catch (error) {
             setMessage('Error registering user');
         }
@@ -54,7 +62,7 @@ function Register() {
                 />
                 <button type="submit">Register</button>
             </form>
-            <p>{message}</p>
+            <p className={message.includes('successful') ? 'success' : 'error'}>{message}</p> {/* Conditionally style message */}
         </div>
     );
 }

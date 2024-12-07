@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom for navigation
 
 function Login() {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -49,6 +50,7 @@ function Login() {
                 <button type="submit">Login</button>
             </form>
             <p>{message}</p>
+            <p>Don't have an account? <Link to="/register">Register here</Link></p> {/* Added Link to Register page */}
         </div>
     );
 }

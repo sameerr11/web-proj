@@ -24,11 +24,13 @@ const teamRoutes = require('./routes/teams');
 const matchRoutes = require('./routes/matches');
 const userRoutes = require('./routes/users');
 const groundRoutes = require('./routes/grounds');
+const authRoutes = require('./routes/auth');  // New authentication routes
 
 app.use('/api/teams', teamRoutes);
 app.use('/api/matches', matchRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/grounds', groundRoutes);
+app.use('/api/auth', authRoutes);  // Add auth routes here
 
 // Default Route
 app.get('/', (req, res) => {
