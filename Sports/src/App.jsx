@@ -5,9 +5,9 @@ import TeamManager from './components/TeamManager';
 import MatchScheduler from './components/MatchScheduler';
 import GroundManager from './components/GroundManager';
 import Ecommerce from './components/Ecommerce';
-import Login from './components/Login'; // Assuming you have this component
-import Register from './components/Register'; // Assuming you have this component
-import './styles/global.css'; // Ensure this is the correct path for global styles
+import Login from './components/Login'; 
+import Register from './components/Register';
+import './styles/global.css'; 
 
 function App() {
     const [isDarkMode, setIsDarkMode] = useState(false);
