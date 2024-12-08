@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';  // Import useNavigate to redirect after logout
 
-function Dashboard({ handleViewChange }) {
+function Dashboard({ handleViewChange, currentView }) {
     const [user, setUser] = useState({ name: '', email: '', profilePicture: '' });
     const [upcomingMatches, setUpcomingMatches] = useState([]);
     const [financialStats, setFinancialStats] = useState({ totalEarnings: 0, expenses: 0 });
@@ -12,7 +12,10 @@ function Dashboard({ handleViewChange }) {
     useEffect(() => {
         fetch('/api/users/me') // Replace with your backend API endpoint
             .then(response => response.json())
-            .then(data => setUser(data))
+            .then(data => {
+                console.log("User data:", data);  // Check if data is being set correctly
+                setUser(data);
+            })
             .catch(error => console.error('Error fetching user data:', error));
     }, []);
 
@@ -49,8 +52,8 @@ function Dashboard({ handleViewChange }) {
                     alt="Profile"
                     className="profile-picture"
                 />
-                <h1>Welcome, {user.name}</h1>
-                <p>Email: {user.email}</p>
+                <h1>Welcome, {user.name || 'User'}</h1>
+                <p>Email: {user.email || 'Not provided'}</p>
             </header>
 
             <section className="dashboard-options">
@@ -69,24 +72,33 @@ function Dashboard({ handleViewChange }) {
             </section>
 
             <section className="dashboard-overview">
-                <h2>Upcoming Matches</h2>
-                <ul className="match-list">
-                    {upcomingMatches.length > 0 ? (
-                        upcomingMatches.map(match => (
-                            <li key={match.id}>
-                                {match.teamA} vs {match.teamB} on {new Date(match.date).toLocaleDateString()}
-                            </li>
-                        ))
-                    ) : (
-                        <p>No upcoming matches found.</p>
-                    )}
-                </ul>
+                {currentView === 'dashboard' && (
+                    <>
+                        <h2>Upcoming Matches</h2>
+                        <ul className="match-list">
+                            {upcomingMatches.length > 0 ? (
+                                upcomingMatches.map(match => (
+                                    <li key={match.id}>
+                                        {match.teamA} vs {match.teamB} on {new Date(match.date).toLocaleDateString()}
+                                    </li>
+                                ))
+                            ) : (
+                                <p>No upcoming matches found.</p>
+                            )}
+                        </ul>
 
-                <h2>Financial Statistics</h2>
-                <div className="financial-stats">
-                    <p>Total Earnings: ${financialStats.totalEarnings}</p>
-                    <p>Expenses: ${financialStats.expenses}</p>
-                </div>
+                        <h2>Financial Statistics</h2>
+                        <div className="financial-stats">
+                            <p>Total Earnings: ${financialStats.totalEarnings}</p>
+                            <p>Expenses: ${financialStats.expenses}</p>
+                        </div>
+                    </>
+                )}
+
+                {currentView === 'team-manager' && <h2>Team Management Page</h2>}
+                {currentView === 'match-scheduler' && <h2>Match Scheduling Page</h2>}
+                {currentView === 'ground-manager' && <h2>Ground Management Page</h2>}
+                {currentView === 'ecommerce' && <h2>E-commerce Page</h2>}
             </section>
 
             {/* Logout Button */}

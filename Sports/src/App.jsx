@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; // Import routing
 import Dashboard from './components/Dashboard';
+import DashboardContainer from './components/DashboardContainer';
 import TeamManager from './components/TeamManager';
 import MatchScheduler from './components/MatchScheduler';
 import GroundManager from './components/GroundManager';
@@ -53,11 +54,13 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
                             <Route path="/dashboard" element={<Dashboard />} />
+                            <Route path="/" element={<DashboardContainer />} />
                             <Route path="/team-manager" element={<TeamManager />} />
                             <Route path="/match-scheduler" element={<MatchScheduler />} />
                             <Route path="/ground-manager" element={<GroundManager />} />
                             <Route path="/ecommerce" element={<Ecommerce />} />
                         </>
+                        
                     ) : (
                         // If not authenticated, redirect to Login
                         <>
