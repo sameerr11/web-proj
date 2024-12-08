@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate to redirect after logout
 
 function Dashboard({ handleViewChange }) {
     const [user, setUser] = useState({ name: '', email: '', profilePicture: '' });
     const [upcomingMatches, setUpcomingMatches] = useState([]);
     const [financialStats, setFinancialStats] = useState({ totalEarnings: 0, expenses: 0 });
+
+    const navigate = useNavigate();  // Initialize useNavigate hook
 
     // Fetch user details
     useEffect(() => {
@@ -28,6 +31,15 @@ function Dashboard({ handleViewChange }) {
             .then(data => setFinancialStats(data))
             .catch(error => console.error('Error fetching financial stats:', error));
     }, []);
+
+    // Handle Logout
+    const handleLogout = () => {
+        // Remove token from localStorage
+        localStorage.removeItem('token');
+
+        // Redirect to the login page
+        navigate('/login');
+    };
 
     return (
         <div className="dashboard-container">
@@ -76,6 +88,11 @@ function Dashboard({ handleViewChange }) {
                     <p>Expenses: ${financialStats.expenses}</p>
                 </div>
             </section>
+
+            {/* Logout Button */}
+            <button onClick={handleLogout} className="logout-button">
+                Logout
+            </button>
         </div>
     );
 }

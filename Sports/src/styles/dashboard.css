@@ -92,3 +92,16 @@
     margin: 10px 0;
     color: #333;
 }
+
+.logout-button {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.logout-button:hover {
+    background-color: darkred;
+}
