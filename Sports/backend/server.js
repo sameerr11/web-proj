@@ -4,6 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -24,7 +26,7 @@ const teamRoutes = require('./routes/teams');
 const matchRoutes = require('./routes/matches');
 const userRoutes = require('./routes/users');
 const groundRoutes = require('./routes/grounds');
-const authRoutes = require('./routes/auth');  // New authentication routes
+const authRoutes = require('./routes/authRoutes');  // New authentication routes
 
 app.use('/api/teams', teamRoutes);
 app.use('/api/matches', matchRoutes);
