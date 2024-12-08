@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-import Dashboard from './Dashboard'; // Assuming Dashboard is in the same directory
+import Dashboard from './Dashboard';
+import TeamManager from './TeamManager';
+import MatchScheduler from './MatchScheduler';
+import GroundManager from './GroundManager';
+import Ecommerce from './Ecommerce';
 
 function DashboardContainer() {
-    const navigate = useNavigate(); // Initialize useNavigate hook
-    const [view, setView] = useState('dashboard'); // Default view
+    const [currentView, setCurrentView] = useState('dashboard'); // Default view is 'dashboard'
 
     const handleViewChange = (newView) => {
-        setView(newView);
-        navigate(`/${newView}`); // Navigate to the path corresponding to the view
+        setCurrentView(newView);  // Update the current view based on button click
     };
 
     return (
         <div>
-            <Dashboard handleViewChange={handleViewChange} currentView={view} />
+            <Dashboard handleViewChange={handleViewChange} currentView={currentView} />
+            <section>
+                {currentView === 'team-manager' && <TeamManager />}
+                {currentView === 'match-scheduler' && <MatchScheduler />}
+                {currentView === 'ground-manager' && <GroundManager />}
+                {currentView === 'ecommerce' && <Ecommerce />}
+            </section>
         </div>
     );
 }
