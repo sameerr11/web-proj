@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom for navigation
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 
 function Login() {
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [message, setMessage] = useState('');
+    const navigate = useNavigate(); // Initialize the navigate function
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,11 +20,13 @@ function Login() {
             });
             const data = await response.json();
             if (response.ok) {
-                localStorage.setItem('token', data.token);
-                setMessage('Login successful!');
-            } else setMessage(data.msg);
+                localStorage.setItem('token', data.token); // Save the token in localStorage
+                navigate('/dashboard'); // Redirect to the dashboard on success
+            } else {
+                setMessage(data.msg); // Display error message if login fails
+            }
         } catch (error) {
-            setMessage('Error logging in');
+            setMessage('Error logging in'); // Display a generic error message if there's an issue
         }
     };
 
@@ -50,7 +53,7 @@ function Login() {
                 <button type="submit">Login</button>
             </form>
             <p>{message}</p>
-            <p>Don't have an account? <Link to="/register">Register here</Link></p> {/* Added Link to Register page */}
+            <p>Don't have an account? <Link to="/register">Register here</Link></p>
         </div>
     );
 }

@@ -50,7 +50,9 @@ function App() {
                     {/* If authenticated, show Dashboard and other components */}
                     {isAuthenticated ? (
                         <>
-                            <Route path="/" element={<Dashboard />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/dashboard" element={<Dashboard />} />
                             <Route path="/team-manager" element={<TeamManager />} />
                             <Route path="/match-scheduler" element={<MatchScheduler />} />
                             <Route path="/ground-manager" element={<GroundManager />} />
