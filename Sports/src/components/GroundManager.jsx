@@ -35,7 +35,7 @@ function GroundManager() {
         <div className="ground-manager">
             {/* Back Button */}
             <button className="back-button" onClick={() => navigate(-1)}>
-                Back
+                ⬅ Back to Dashboard
             </button>
 
             <h2>Manage Grounds</h2>

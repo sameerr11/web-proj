@@ -38,7 +38,7 @@ function MatchScheduler() {
         <div className="match-scheduler-container">
             {/* Back Button */}
             <button className="back-button" onClick={() => navigate(-1)}>
-                Back
+                ⬅ Back to Dashboard
             </button>
 
             <h2>Schedule a Match</h2>
