@@ -4,6 +4,7 @@ import TeamManager from './TeamManager';
 import MatchScheduler from './MatchScheduler';
 import GroundManager from './GroundManager';
 import Ecommerce from './Ecommerce';
+import '../styles/dashboard.css';  // Adjust path based on your folder structure
 
 function DashboardContainer() {
     const [currentView, setCurrentView] = useState('dashboard'); // Default view is 'dashboard'

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/dashboard.css';  // Adjust path based on your folder structure
+
 import { useNavigate } from 'react-router-dom';  // Import useNavigate to redirect after logout
 
 function Dashboard({ handleViewChange, currentView }) {

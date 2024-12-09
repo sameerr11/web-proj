@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../styles/team-manager.css';  // Adjust path based on your folder structure
+
 
 function TeamManager() {
     const [teams, setTeams] = useState([]);

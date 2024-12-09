@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import '../styles/ecommerce.css';  // Adjust path based on your folder structure
+
+
 
 function Ecommerce() {
     const [cart, setCart] = useState([]); // State to store the products in the cart
