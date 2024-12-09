@@ -1,15 +1,18 @@
+/* Dashboard Container */
 .dashboard-container {
-    width: 100%;
     max-width: 900px;
-    margin: 50px auto;
+    margin: 40px auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
+/* User Profile */
 .user-profile {
+    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -17,91 +20,112 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    margin: 10px auto;
+    border: 2px solid #ddd;
+    margin-bottom: 10px;
 }
 
 .user-profile h1 {
-    font-size: 2em;
-    font-weight: bold;
-    color: #007bff;
+    font-size: 24px;
+    color: #333;
 }
 
 .user-profile p {
-    font-size: 1.1em;
-    color: #555;
+    font-size: 14px;
+    color: #666;
 }
 
+/* Dashboard Options */
 .dashboard-options {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .dashboard-button {
     background-color: #007bff;
     color: white;
-    width: 220px;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 8px;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    font-size: 16px;
     border: none;
+    border-radius: 5px;
+    margin: 10px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .dashboard-button:hover {
     background-color: #0056b3;
 }
 
+/* Dashboard Overview */
 .dashboard-overview {
-    margin-top: 30px;
     text-align: left;
 }
 
 .dashboard-overview h2 {
-    font-size: 1.8em;
+    font-size: 20px;
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .match-list {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
 }
 
-.match-list li {
-    background: #f8f9fa;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    font-size: 1.1em;
-}
-
-.financial-stats {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.financial-stats p {
-    font-size: 1.2em;
-    margin: 10px 0;
+.match-list p {
     color: #333;
 }
 
+.match-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f8f9fa;
+}
+
+.financial-stats p {
+    font-size: 16px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.financial-stats strong {
+    color: #28a745;
+}
+
+/* Logout Button */
 .logout-button {
-    padding: 10px 20px;
-    background-color: red;
+    background-color: #dc3545;
     color: white;
+    padding: 10px 20px;
+    font-size: 16px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
     margin-top: 20px;
 }
 
 .logout-button:hover {
-    background-color: darkred;
+    background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 15px;
+    }
+
+    .dashboard-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .financial-stats p,
+    .user-profile p {
+        font-size: 12px;
+    }
 }

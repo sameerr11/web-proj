@@ -1,48 +1,59 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/dashboard.css';  // Adjust path based on your folder structure
+import '../styles/dashboard.css';
+import { useNavigate } from 'react-router-dom';
 
-import { useNavigate } from 'react-router-dom';  // Import useNavigate to redirect after logout
-
-function Dashboard({ handleViewChange, currentView }) {
+function Dashboard({ currentView }) {
     const [user, setUser] = useState({ name: '', email: '', profilePicture: '' });
     const [upcomingMatches, setUpcomingMatches] = useState([]);
     const [financialStats, setFinancialStats] = useState({ totalEarnings: 0, expenses: 0 });
 
-    const navigate = useNavigate();  // Initialize useNavigate hook
+    const navigate = useNavigate();
 
     // Fetch user details
     useEffect(() => {
-        fetch('/api/users/me') // Replace with your backend API endpoint
-            .then(response => response.json())
-            .then(data => {
-                console.log("User data:", data);  // Check if data is being set correctly
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch('/api/users/me');
+                const data = await response.json();
                 setUser(data);
-            })
-            .catch(error => console.error('Error fetching user data:', error));
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+        fetchUserData();
     }, []);
 
     // Fetch upcoming matches
     useEffect(() => {
-        fetch('/api/matches/upcoming') // Replace with your backend API endpoint
-            .then(response => response.json())
-            .then(data => setUpcomingMatches(data))
-            .catch(error => console.error('Error fetching matches:', error));
+        const fetchMatches = async () => {
+            try {
+                const response = await fetch('/api/matches/upcoming');
+                const data = await response.json();
+                setUpcomingMatches(data);
+            } catch (error) {
+                console.error('Error fetching matches:', error);
+            }
+        };
+        fetchMatches();
     }, []);
 
     // Fetch financial statistics
     useEffect(() => {
-        fetch('/api/financial-stats') // Replace with your backend API endpoint
-            .then(response => response.json())
-            .then(data => setFinancialStats(data))
-            .catch(error => console.error('Error fetching financial stats:', error));
+        const fetchFinancialStats = async () => {
+            try {
+                const response = await fetch('/api/financial-stats');
+                const data = await response.json();
+                setFinancialStats(data);
+            } catch (error) {
+                console.error('Error fetching financial stats:', error);
+            }
+        };
+        fetchFinancialStats();
     }, []);
 
     // Handle Logout
     const handleLogout = () => {
-        // Remove token from localStorage
         localStorage.removeItem('token');
-
-        // Redirect to the login page
         navigate('/login');
     };
 
@@ -50,7 +61,7 @@ function Dashboard({ handleViewChange, currentView }) {
         <div className="dashboard-container">
             <header className="user-profile">
                 <img
-                    src={user.profilePicture || 'default-profile.png'}
+                    src={user.profilePicture || '/default-profile.png'}
                     alt="Profile"
                     className="profile-picture"
                 />
@@ -59,7 +70,6 @@ function Dashboard({ handleViewChange, currentView }) {
             </header>
 
             <section className="dashboard-options">
-
                 <button onClick={() => navigate('/team-manager')} className="dashboard-button">
                     Team Management
                 </button>
@@ -72,7 +82,6 @@ function Dashboard({ handleViewChange, currentView }) {
                 <button onClick={() => navigate('/ecommerce')} className="dashboard-button">
                     E-commerce
                 </button>
-
             </section>
 
             <section className="dashboard-overview">
@@ -81,9 +90,10 @@ function Dashboard({ handleViewChange, currentView }) {
                         <h2>Upcoming Matches</h2>
                         <ul className="match-list">
                             {upcomingMatches.length > 0 ? (
-                                upcomingMatches.map(match => (
-                                    <li key={match.id}>
-                                        {match.teamA} vs {match.teamB} on {new Date(match.date).toLocaleDateString()}
+                                upcomingMatches.map((match) => (
+                                    <li key={match.id} className="match-item">
+                                        <strong>{match.teamA}</strong> vs <strong>{match.teamB}</strong> on{' '}
+                                        {new Date(match.date).toLocaleDateString()} at {match.venue}
                                     </li>
                                 ))
                             ) : (
@@ -93,19 +103,14 @@ function Dashboard({ handleViewChange, currentView }) {
 
                         <h2>Financial Statistics</h2>
                         <div className="financial-stats">
-                            <p>Total Earnings: ${financialStats.totalEarnings}</p>
-                            <p>Expenses: ${financialStats.expenses}</p>
+                            <p>Total Earnings: <strong>${financialStats.totalEarnings}</strong></p>
+                            <p>Expenses: <strong>${financialStats.expenses}</strong></p>
+                            <p>Profit: <strong>${financialStats.totalEarnings - financialStats.expenses}</strong></p>
                         </div>
                     </>
                 )}
-
-                {currentView === 'team-manager' && <h2>Team Management Page</h2>}
-                {currentView === 'match-scheduler' && <h2>Match Scheduling Page</h2>}
-                {currentView === 'ground-manager' && <h2>Ground Management Page</h2>}
-                {currentView === 'ecommerce' && <h2>E-commerce Page</h2>}
             </section>
 
-            {/* Logout Button */}
             <button onClick={handleLogout} className="logout-button">
                 Logout
             </button>
