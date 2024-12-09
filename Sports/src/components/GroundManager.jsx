@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/ground-manager.css';  // Adjust path based on your folder structure
 
-
-
 function GroundManager() {
     const [grounds, setGrounds] = useState([]);
     const [newGround, setNewGround] = useState({ name: '', location: '', capacity: '', facilities: '' });
