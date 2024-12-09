@@ -100,13 +100,6 @@ function Dashboard({ currentView }) {
                                 <p>No upcoming matches found.</p>
                             )}
                         </ul>
-
-                        <h2>Financial Statistics</h2>
-                        <div className="financial-stats">
-                            <p>Total Earnings: <strong>${financialStats.totalEarnings}</strong></p>
-                            <p>Expenses: <strong>${financialStats.expenses}</strong></p>
-                            <p>Profit: <strong>${financialStats.totalEarnings - financialStats.expenses}</strong></p>
-                        </div>
                     </>
                 )}
             </section>
