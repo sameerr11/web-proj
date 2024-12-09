@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/ground-manager.css';  // Adjust path based on your folder structure
+import '../styles/ground-manager.css'; // Adjust path based on your folder structure
+import { useNavigate } from 'react-router-dom'; // To navigate back to the previous page
 
 function GroundManager() {
     const [grounds, setGrounds] = useState([]);
     const [newGround, setNewGround] = useState({ name: '', location: '', capacity: '', facilities: '' });
+    const navigate = useNavigate(); // Hook for navigation
 
     useEffect(() => {
         fetch('/api/grounds')
@@ -31,8 +33,15 @@ function GroundManager() {
 
     return (
         <div className="ground-manager">
+            {/* Back Button */}
+            <button className="back-button" onClick={() => navigate(-1)}>
+                Back
+            </button>
+
             <h2>Manage Grounds</h2>
-            <form onSubmit={addGround}>
+
+            {/* Add Ground Form */}
+            <form className="add-ground-form" onSubmit={addGround}>
                 <input
                     type="text"
                     placeholder="Ground Name"
@@ -61,7 +70,9 @@ function GroundManager() {
                 />
                 <button type="submit">Add Ground</button>
             </form>
-            <ul>
+
+            {/* Grounds List */}
+            <ul className="ground-list">
                 {grounds.map((ground) => (
                     <li key={ground._id} className="ground-item">
                         <h3>{ground.name}</h3>

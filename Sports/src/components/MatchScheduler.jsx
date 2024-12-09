@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/match-scheduler.css';
 
 function MatchScheduler() {
     const [teams, setTeams] = useState([]);
     const [match, setMatch] = useState({ teamA: '', teamB: '', venue: '', date: '', time: '' });
+    const navigate = useNavigate(); // Hook for navigation
 
     useEffect(() => {
         fetch('/api/teams')
@@ -13,6 +15,11 @@ function MatchScheduler() {
 
     const scheduleMatch = async (e) => {
         e.preventDefault();
+        if (match.teamA === match.teamB) {
+            alert('Team A and Team B cannot be the same.');
+            return;
+        }
+
         const response = await fetch('/api/matches', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -29,6 +36,11 @@ function MatchScheduler() {
 
     return (
         <div className="match-scheduler-container">
+            {/* Back Button */}
+            <button className="back-button" onClick={() => navigate(-1)}>
+                Back
+            </button>
+
             <h2>Schedule a Match</h2>
             <form onSubmit={scheduleMatch}>
                 <div className="form-group">

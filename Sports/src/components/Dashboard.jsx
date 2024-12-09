@@ -59,18 +59,20 @@ function Dashboard({ handleViewChange, currentView }) {
             </header>
 
             <section className="dashboard-options">
-                <button onClick={() => handleViewChange('team-manager')} className="dashboard-button">
+
+                <button onClick={() => navigate('/team-manager')} className="dashboard-button">
                     Team Management
                 </button>
-                <button onClick={() => handleViewChange('match-scheduler')} className="dashboard-button">
+                <button onClick={() => navigate('/match-scheduler')} className="dashboard-button">
                     Match Scheduling
                 </button>
-                <button onClick={() => handleViewChange('ground-manager')} className="dashboard-button">
+                <button onClick={() => navigate('/ground-manager')} className="dashboard-button">
                     Ground Management
                 </button>
-                <button onClick={() => handleViewChange('ecommerce')} className="dashboard-button">
+                <button onClick={() => navigate('/ecommerce')} className="dashboard-button">
                     E-commerce
                 </button>
+
             </section>
 
             <section className="dashboard-overview">
