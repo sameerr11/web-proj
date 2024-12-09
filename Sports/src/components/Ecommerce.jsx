@@ -2,15 +2,42 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // For navigation
 import '../styles/ecommerce.css'; // Adjust the path based on your folder structure
 
+// Import images
+import footballImg from './football.jpg';
+import jerseyImg from './jersey.jpg';
+import glovesImg from './gloves.webp';
+import bootsImg from './boots.avif';
+
 function Ecommerce() {
     const [cart, setCart] = useState([]); // State to store the products in the cart
     const navigate = useNavigate(); // Initialize navigate hook
 
+    // Products with images (now imported directly)
     const products = [
-        { id: 1, name: 'Soccer Ball', price: 20 },
-        { id: 2, name: 'Jersey', price: 30 },
-        { id: 3, name: 'Goalkeeper Gloves', price: 25 },
-        { id: 4, name: 'Football Boots', price: 50 }
+        {
+            id: 1,
+            name: 'Soccer Ball',
+            price: 20,
+            image: footballImg, // Use the imported image
+        },
+        {
+            id: 2,
+            name: 'Jersey',
+            price: 30,
+            image: jerseyImg, // Use the imported image
+        },
+        {
+            id: 3,
+            name: 'Goalkeeper Gloves',
+            price: 25,
+            image: glovesImg, // Use the imported image
+        },
+        {
+            id: 4,
+            name: 'Football Boots',
+            price: 50,
+            image: bootsImg, // Use the imported image
+        },
     ];
 
     const addToCart = (product) => {
@@ -45,11 +72,10 @@ function Ecommerce() {
             <section className="product-list">
                 {products.map((product) => (
                     <div key={product.id} className="product-card">
-                        {/* Add a placeholder image */}
                         <img
-                            src={`/${product.name.toLowerCase().replace(' ', '-')}.jpg`}
+                            src={product.image} // Use the imported image
                             alt={product.name}
-                            onError={(e) => (e.target.src = '/default-product.jpg')} // Fallback image
+                            onError={(e) => (e.target.src = defaultImg)} // Fallback to imported default image
                         />
                         <h3>{product.name}</h3>
                         <p>Price: ${product.price}</p>
