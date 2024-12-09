@@ -1,6 +1,7 @@
 /* Match Scheduler Container */
 .match-scheduler-container {
     max-width: 600px;
+    width: 400px;
     margin: 40px auto;
     padding: 20px;
     font-family: Arial, sans-serif;
