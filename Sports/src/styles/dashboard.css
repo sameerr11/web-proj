@@ -4,7 +4,7 @@
     margin: 10px auto;
     padding: 20px;
     font-family: Arial, sans-serif;
-    background: url('./bg.jpg') no-repeat center center fixed; /* Add a background image */
+    background: url('./bg.jpg') no-repeat center center fixed;
     background-size: auto;
     color: #fff; /* Ensure text stands out against the background */
     border-radius: 8px;
