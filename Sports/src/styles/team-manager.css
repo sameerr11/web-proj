@@ -1,170 +1,12 @@
 /* Main container */
 .team-manager {
     text-align: center;
-    margin-top: 30px;
-    padding: 20px;
-    max-width:  1000px;
-    width: 500px;
-    margin: 30px auto;
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Header styling */
-.team-manager-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-h2 {
-    margin: 0;
-    font-size: 24px;
-    color: #333;
-}
-
-.back-button {
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.back-button:hover {
-    background-color: #0056b3;
-}
-
-/* Fetch button */
-.fetch-teams-button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: background-color 0.3s;
-}
-
-.fetch-teams-button:hover {
-    background-color: #218838;
-}
-
-.fetch-teams-button:disabled {
-    background-color: #94d3a2;
-    cursor: not-allowed;
-}
-
-/* Team list styling */
-.team-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.team-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s;
-}
-
-.team-item:hover {
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.team-item h3 {
-    color: #007bff;
-}
-
-.team-item p {
-    margin: 0;
-    color: #555;
-}
-
-/* Error and empty state messages */
-.error-message {
-    color: red;
-    font-style: italic;
-    margin-bottom: 20px;
-}
-
-.empty-state-message {
-    color: #888;
-    font-style: italic;
-    margin-top: 20px;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .team-manager {
-        padding: 15px;
-        text-align: left;
-    }
-
-    .team-item {
-        padding: 10px;
-        font-size: 0.9em;
-    }
-
-    .back-button {
-        font-size: 12px;
-    }
-}
-
-
-/* Add team form styling */
-.add-team-form {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.add-team-form input {
-    padding: 10px;
-    font-size: 1em;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-}
-
-
-
-.add-team-form button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    font-size: 1em;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.add-team-form button:hover {
-    background-color: #0056b3;
-}
-/* Main container */
-.team-manager {
-    text-align: center;
     margin: 40px auto;
     padding: 30px;
     max-width: 1000px;
-    width: 90%;
+    width: 100%;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #410507, #032a29);
+    background: linear-gradient(135deg, #4e0808, #04333b);
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
@@ -182,8 +24,8 @@ h2 {
     margin: 0;
     font-size: 28px;
     font-weight: bold;
-    color: #ffffff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    color: #f8f3f3;
+    text-shadow: 1px 1px 2px rgba(27, 106, 118, 0.1);
 }
 
 .back-button {
@@ -290,8 +132,8 @@ h2 {
 .add-team-form input {
     padding: 12px;
     font-size: 16px;
-    color: #040000;
     border-radius: 6px;
+    color: #000;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
     transition: border 0.3s;
