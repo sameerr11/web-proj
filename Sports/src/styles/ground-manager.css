@@ -1,6 +1,6 @@
 /* General Container Styles */
 .ground-manager {
-    max-width: 800px;
+    max-width: 90%; 
     width: 500px;
     background: url('./bg.jpg');
     margin: 40px auto;
@@ -36,8 +36,7 @@
     transform: scale(1.05);
 }
 
-.ground-manager
-h2 {
+.ground-manager h2 {
     margin-bottom: 25px;
     background: rgba(0, 0, 0, 0.653);
     padding: 10px;
@@ -134,25 +133,27 @@ h2 {
 /* Responsive Design */
 @media (max-width: 768px) {
     .ground-manager {
+        width: 100%; 
+        max-width: 100%; 
         padding: 20px;
     }
 
-    .add-ground-form input {
-        width: 100%;
-        font-size: 13px;
-    }
-
-    .ground-item {
-        padding: 15px;
-    }
-
     h2 {
-        font-size: 24px;
+        font-size: 24px; 
     }
 
     .back-button,
     .add-ground-form button {
         font-size: 14px;
         padding: 10px 20px;
+    }
+
+    .add-ground-form input {
+        width: 100%; 
+        font-size: 13px;
+    }
+
+    .ground-item {
+        padding: 15px; 
     }
 }

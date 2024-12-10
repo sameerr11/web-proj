@@ -13,13 +13,30 @@ function Dashboard({ currentView }) {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch('/api/users/me');
+                const token = localStorage.getItem('token'); // Get token from localStorage
+                if (!token) {
+                    console.error('No token found');
+                    return;
+                }
+
+                const response = await fetch('/api/users/me', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`, // Include token in headers
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user data');
+                }
+
                 const data = await response.json();
+                console.log('User data:', data); // Debugging log
                 setUser(data);
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
         };
+
         fetchUserData();
     }, []);
 

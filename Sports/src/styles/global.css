@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    flex-direction: column; /* Ensures the content is vertically aligned */
+    flex-direction: column;
     transition: background-color 0.3s ease, color 0.3s ease;
     background-color: #f9f9f9;
     color: #333;
@@ -18,7 +18,7 @@ body {
 /* Centering the app's content */
 .App {
     width: 100%;
-    max-width: 1200px; /* Maximum width of the content */
+    max-width: 1200px; 
     padding: 20px;
     box-sizing: border-box;
     transition: all 0.3s ease;

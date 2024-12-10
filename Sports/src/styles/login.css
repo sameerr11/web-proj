@@ -6,7 +6,8 @@
     align-items: center;
     justify-content: center;
     min-height: 10vh;
-    width: 500px;
+    width: 90%;  
+    max-width: 500px; 
     border-radius: 20px;
     padding: 20px;
     background: linear-gradient(135deg, #3b0511, #063d43);
@@ -21,9 +22,10 @@
     padding: 20px 30px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.57);
     backdrop-filter: blur(10px);
-    width: 80%;
+    width: 100%;  
     max-width: 600px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 /* Input fields */
@@ -32,6 +34,7 @@
     padding: 12px 15px;
     margin: 10px 0;
     font-size: 16px;
+    box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.1);
@@ -97,20 +100,25 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+    .auth-container {
+        width: 90%; 
+        padding: 15px;
+    }
+
     .auth-container form {
         padding: 15px 20px;
     }
 
     .auth-container h2 {
-        font-size: 24px;
+        font-size: 24px; 
     }
 
     .auth-container input {
-        font-size: 14px;
-        padding: 10px 12px;
+        font-size: 14px; 
+        padding: 10px 12px; 
     }
 
     .auth-container button {
-        font-size: 14px;
+        font-size: 14px; 
     }
 }

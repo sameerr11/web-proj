@@ -1,6 +1,6 @@
 /* Match Scheduler Container */
 .match-scheduler-container {
-    max-width: 1000px;
+    max-width: 90%; 
     width: 500px;
     margin: 40px auto;
     padding: 30px;
@@ -37,8 +37,7 @@
 }
 
 /* Heading */
-.match-scheduler-container
-h2 {
+.match-scheduler-container h2 {
     margin-bottom: 25px;
     font-size: 28px;
     background: rgba(0, 0, 0, 0.652);
@@ -67,8 +66,7 @@ form {
     border-radius: 8px;
 }
 
-.form-group
-label {
+.form-group label {
     font-weight: bold;
     font-size: 14px;
     display: block;
@@ -129,6 +127,8 @@ select:focus {
     .match-scheduler-container {
         padding: 20px;
         text-align: left;
+        width: 100%; 
+        max-width: 100%; 
     }
 
     h2 {
@@ -149,5 +149,13 @@ select:focus {
 
     label {
         font-size: 12px;
+    }
+
+    form {
+        width: 100%; 
+    }
+
+    .form-group {
+        padding: 10px; 
     }
 }
