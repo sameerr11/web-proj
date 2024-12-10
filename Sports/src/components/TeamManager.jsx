@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 function TeamManager() {
     const [teams, setTeams] = useState([]);
-    const [loading, setLoading] = useState(false); // State for loading indicator
-    const [error, setError] = useState(null); // State for error handling
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null); 
     const [newTeam, setNewTeam] = useState({
         name: '',
         city: '',

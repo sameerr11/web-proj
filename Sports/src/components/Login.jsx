@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import { Link, useNavigate } from 'react-router-dom'; 
 import '../styles/login.css';
 
 function Login() {
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [message, setMessage] = useState('');
-    const navigate = useNavigate(); // Initialize the navigate function
+    const navigate = useNavigate(); 
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,13 +21,13 @@ function Login() {
             });
             const data = await response.json();
             if (response.ok) {
-                localStorage.setItem('token', data.token); // Save the token in localStorage
-                navigate('/dashboard'); // Redirect to the dashboard on success
+                localStorage.setItem('token', data.token); 
+                navigate('/dashboard'); 
             } else {
-                setMessage(data.msg); // Display error message if login fails
+                setMessage(data.msg); 
             }
         } catch (error) {
-            setMessage('Error logging in'); // Display a generic error message if there's an issue
+            setMessage('Error logging in'); 
         }
     };
 

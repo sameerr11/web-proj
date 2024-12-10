@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/ground-manager.css'; // Adjust path based on your folder structure
-import { useNavigate } from 'react-router-dom'; // To navigate back to the previous page
+import '../styles/ground-manager.css'; 
+import { useNavigate } from 'react-router-dom'; 
 
 function GroundManager() {
     const [grounds, setGrounds] = useState([]);
     const [newGround, setNewGround] = useState({ name: '', location: '', capacity: '', facilities: '' });
-    const navigate = useNavigate(); // Hook for navigation
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         fetch('/api/grounds')

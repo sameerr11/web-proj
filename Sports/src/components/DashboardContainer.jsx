@@ -4,13 +4,13 @@ import TeamManager from './TeamManager';
 import MatchScheduler from './MatchScheduler';
 import GroundManager from './GroundManager';
 import Ecommerce from './Ecommerce';
-import '../styles/dashboard.css';  // Adjust path based on your folder structure
+import '../styles/dashboard.css'; 
 
 function DashboardContainer() {
-    const [currentView, setCurrentView] = useState('dashboard'); // Default view is 'dashboard'
+    const [currentView, setCurrentView] = useState('dashboard'); 
 
     const handleViewChange = (newView) => {
-        setCurrentView(newView);  // Update the current view based on button click
+        setCurrentView(newView); 
     };
 
     return (

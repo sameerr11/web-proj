@@ -5,7 +5,7 @@ import '../styles/match-scheduler.css';
 function MatchScheduler() {
     const [teams, setTeams] = useState([]);
     const [match, setMatch] = useState({ teamA: '', teamB: '', venue: '', date: '', time: '' });
-    const navigate = useNavigate(); // Hook for navigation
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         fetch('/api/teams')

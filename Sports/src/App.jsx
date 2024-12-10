@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; // Import routing
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import DashboardContainer from './components/DashboardContainer';
 import TeamManager from './components/TeamManager';
@@ -12,7 +12,7 @@ import './styles/global.css';
 
 function App() {
     const [isDarkMode, setIsDarkMode] = useState(false);
-    const [isAuthenticated, setIsAuthenticated] = useState(false); // To track authentication
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     // Set the mode on page load (on initial load)
     useEffect(() => {
@@ -22,12 +22,12 @@ function App() {
         
         // Check if token exists for authentication state
         const token = localStorage.getItem('token');
-        setIsAuthenticated(!!token); // If token exists, set authenticated to true
+        setIsAuthenticated(!!token);
     }, []);
 
     // Toggle the theme when button is clicked
     const toggleTheme = () => {
-        const newMode = isDarkMode ? 'light' : 'dark'; // Toggle the mode
+        const newMode = isDarkMode ? 'light' : 'dark';
         setIsDarkMode(!isDarkMode); // Update state
 
         // Remove the previous mode class and add the new mode class
@@ -35,7 +35,7 @@ function App() {
         document.body.classList.add(newMode === 'dark' ? 'dark-mode' : 'light-mode');
 
         // Save the theme choice to localStorage
-        localStorage.setItem('theme', newMode); // Store the selected mode in localStorage
+        localStorage.setItem('theme', newMode);
     };
 
     return (

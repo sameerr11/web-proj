@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // For navigation
-import '../styles/ecommerce.css'; // Adjust the path based on your folder structure
+import { useNavigate } from 'react-router-dom'; 
+import '../styles/ecommerce.css'; 
 
 // Import images
 import footballImg from './football.jpg';
@@ -13,8 +13,8 @@ import badmintonShuttleImg from './shuttle.jpg';
 import cricketBatImg from './bat.jpg';
 
 function Ecommerce() {
-    const [cart, setCart] = useState([]); // State to store the products in the cart
-    const navigate = useNavigate(); // Initialize navigate hook
+    const [cart, setCart] = useState([]); 
+    const navigate = useNavigate(); 
 
     // Products with images
     const products = [
@@ -103,7 +103,7 @@ function Ecommerce() {
                         <img
                             src={product.image}
                             alt={product.name}
-                            onError={(e) => (e.target.src = 'default.jpg')} // Fallback to a default image
+                            onError={(e) => (e.target.src = 'default.jpg')} 
                         />
                         <h3>{product.name}</h3>
                         <p>Price: ${product.price}</p>
