@@ -3,8 +3,8 @@
     max-width: 1200px;
     margin: 30px auto;
     padding: 20px;
+    background: url('./bg.jpg');
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
@@ -26,9 +26,12 @@
 
 h2 {
     margin: 0;
+    background: rgba(0, 0, 0, 0.671);
+    padding: 15px;
+    border-radius: 8px;
     font-size: 28px;
     font-weight: 600;
-    color: #333;
+    color: #ffffff;
 }
 
 .back-button {
@@ -56,15 +59,21 @@ h2 {
 .cart-summary h3 {
     font-size: 18px;
     font-weight: 500;
-    color: #333;
+    background: rgba(0, 0, 0, 0.644);
+    padding: 10px;
+    border-radius: 8px;
+    color: #ffffff;
 }
 
 .cart-items {
     margin-top: 10px;
     list-style-type: none;
     padding: 0;
+    background: rgba(0, 0, 0, 0.634);
+    padding: 10px;
+    border-radius: 8px;
     font-size: 16px;
-    color: #555;
+    color: #fffefe;
     line-height: 1.5;
 }
 

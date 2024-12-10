@@ -4,17 +4,19 @@
     margin: 40px auto;
     padding: 30px;
     max-width: 1000px;
-    width: 100%;
+    width: 500PX;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #4e0808, #04333b);
+    background: url('./bg.jpg');
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.385);
 }
 
 /* Header styling */
 .team-manager-header {
     display: flex;
     justify-content: space-between;
+    padding: 20px;
+    border-radius: 8px;
     align-items: center;
     margin-bottom: 30px;
     padding: 0 10px;
@@ -23,6 +25,9 @@
 .team-manager-header h2 {
     margin: 0;
     font-size: 28px;
+    background: rgba(0, 0, 0, 0.667);
+    padding: 15px;
+    border-radius: 8px;
     font-weight: bold;
     color: #f8f3f3;
     text-shadow: 1px 1px 2px rgba(27, 106, 118, 0.1);
@@ -79,7 +84,7 @@
 
 .team-item {
     border: 1px solid #ddd;
-    padding: 20px;
+    padding: 10px;
     margin: 15px 0;
     border-radius: 8px;
     background-color: #ffffff;
@@ -124,7 +129,10 @@
     margin-bottom: 25px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.684);
+    padding: 20px;
+    border-radius: 8px;
     max-width: 500px;
     margin: 0 auto;
 }

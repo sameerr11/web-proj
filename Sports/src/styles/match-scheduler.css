@@ -1,11 +1,11 @@
 /* Match Scheduler Container */
 .match-scheduler-container {
-    max-width: 800px;
-    width: 100%;
+    max-width: 1000px;
+    width: 500px;
     margin: 40px auto;
     padding: 30px;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #4e0808, #04333b);
+    background: url('./bg.jpg');
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -41,6 +41,9 @@
 h2 {
     margin-bottom: 25px;
     font-size: 28px;
+    background: rgba(0, 0, 0, 0.652);
+    padding: 10px;
+    border-radius: 8px;
     font-weight: bold;
     color: #ffffff;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -57,7 +60,11 @@ form {
 .form-group {
     margin-bottom: 20px;
     width: 100%;
+    margin: 5px;
     text-align: left;
+    background: rgba(0, 0, 0, 0.629);
+    padding: 15px;
+    border-radius: 8px;
 }
 
 .form-group
