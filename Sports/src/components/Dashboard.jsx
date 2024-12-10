@@ -60,13 +60,7 @@ function Dashboard({ currentView }) {
     return (
         <div className="dashboard-container">
             <header className="user-profile">
-                <img
-                    src={user.profilePicture || '/default-profile.png'}
-                    alt="Profile"
-                    className="profile-picture"
-                />
                 <h1>Welcome, {user.name || 'User'}</h1>
-                <p>Email: {user.email || 'Not provided'}</p>
             </header>
 
             <section className="dashboard-options">
