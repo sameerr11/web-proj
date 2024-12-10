@@ -4,6 +4,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
+    background: url('./bgg.avif') no-repeat center center fixed;
+    background-size: cover;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -25,7 +27,7 @@ body {
 /* Light Mode */
 body.light-mode {
     background-color: #f9f9f9;
-    color: #333;
+    color: #040000;
 }
 
 /* Dark Mode */
