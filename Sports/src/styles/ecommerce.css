@@ -11,7 +11,7 @@
 }
 
 .ecommerce:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
 /* Header styling */
@@ -102,7 +102,7 @@ h2 {
 .product-card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    background-color: #f0f9ff; /* Subtle background color change on hover */
+    background-color: #f0f9ff;
 }
 
 .product-card img {
@@ -121,7 +121,8 @@ h2 {
 }
 
 .product-card p {
-    color: #333;
+    font-weight: bold;
+    color: #000000;
     font-size: 16px;
 }
 

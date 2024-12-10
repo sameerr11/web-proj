@@ -6,7 +6,7 @@
     font-family: Arial, sans-serif;
     background: url('./bg.jpg');
     background-size: auto;
-    color: #fff; /* Ensure text stands out against the background */
+    color: #fff; 
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -43,7 +43,8 @@
 
 .dashboard-button {
     background: rgba(255, 255, 255, 0.8);
-    color: #333;
+    color: #0c0c0c;
+    font-weight: bold;
     padding: 12px 20px;
     font-size: 16px;
     border: none;

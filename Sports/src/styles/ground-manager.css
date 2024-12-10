@@ -124,7 +124,8 @@ h2 {
 }
 
 .ground-item p {
-    color: #555;
+    color: #050000;
+    font-weight: bold;
     font-size: 14px;
     margin: 5px 0;
     line-height: 1.5;
