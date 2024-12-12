@@ -12,6 +12,19 @@
     text-align: center;
 }
 
+
+.search-filter-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.search-input, .filter-date-input {
+    padding: 5px;
+    font-size: 14px;
+}
+
+
 /* User Profile */
 .user-profile {
     text-align: center;

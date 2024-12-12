@@ -6,14 +6,14 @@ function Dashboard({ currentView }) {
     const [user, setUser] = useState({ name: '', email: '', profilePicture: '' });
     const [upcomingMatches, setUpcomingMatches] = useState([]);
     const [financialStats, setFinancialStats] = useState({ totalEarnings: 0, expenses: 0 });
-
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filterDate, setFilterDate] = useState('');
     const navigate = useNavigate();
 
-    // Fetch user details
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const token = localStorage.getItem('token'); 
+                const token = localStorage.getItem('token');
                 if (!token) {
                     console.error('No token found');
                     return;
@@ -21,7 +21,7 @@ function Dashboard({ currentView }) {
 
                 const response = await fetch('/api/users/me', {
                     headers: {
-                        'Authorization': `Bearer ${token}`, 
+                        'Authorization': `Bearer ${token}`,
                     },
                 });
 
@@ -30,7 +30,6 @@ function Dashboard({ currentView }) {
                 }
 
                 const data = await response.json();
-                console.log('User data:', data); 
                 setUser(data);
             } catch (error) {
                 console.error('Error fetching user data:', error);
@@ -40,7 +39,6 @@ function Dashboard({ currentView }) {
         fetchUserData();
     }, []);
 
-    // Fetch upcoming matches
     useEffect(() => {
         const fetchMatches = async () => {
             try {
@@ -54,7 +52,6 @@ function Dashboard({ currentView }) {
         fetchMatches();
     }, []);
 
-    // Fetch financial statistics
     useEffect(() => {
         const fetchFinancialStats = async () => {
             try {
@@ -68,11 +65,19 @@ function Dashboard({ currentView }) {
         fetchFinancialStats();
     }, []);
 
-    // Handle Logout
     const handleLogout = () => {
         localStorage.removeItem('token');
         navigate('/login');
     };
+
+    const filteredMatches = upcomingMatches.filter((match) => {
+        const matchDate = new Date(match.date).toISOString().split('T')[0];
+        const matchTeams = `${match.teamA} vs ${match.teamB}`.toLowerCase();
+        return (
+            (!filterDate || matchDate === filterDate) &&
+            (!searchQuery || matchTeams.includes(searchQuery.toLowerCase()))
+        );
+    });
 
     return (
         <div className="dashboard-container">
@@ -99,16 +104,31 @@ function Dashboard({ currentView }) {
                 {currentView === 'dashboard' && (
                     <>
                         <h2>Upcoming Matches</h2>
+                        <div className="search-filter-container">
+                            <input
+                                type="text"
+                                placeholder="Search (e.g., TeamA vs TeamB)"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="search-input"
+                            />
+                            <input
+                                type="date"
+                                value={filterDate}
+                                onChange={(e) => setFilterDate(e.target.value)}
+                                className="filter-date-input"
+                            />
+                        </div>
                         <ul className="match-list">
-                            {upcomingMatches.length > 0 ? (
-                                upcomingMatches.map((match) => (
+                            {filteredMatches.length > 0 ? (
+                                filteredMatches.map((match) => (
                                     <li key={match.id} className="match-item">
                                         <strong>{match.teamA}</strong> vs <strong>{match.teamB}</strong> on{' '}
                                         {new Date(match.date).toLocaleDateString()} at {match.venue}
                                     </li>
                                 ))
                             ) : (
-                                <p>No upcoming matches found.</p>
+                                <p>No matches found.</p>
                             )}
                         </ul>
                     </>
