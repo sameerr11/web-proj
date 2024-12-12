@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom';
 function TeamManager() {
     const [teams, setTeams] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null); 
+    const [error, setError] = useState(null);
     const [newTeam, setNewTeam] = useState({
         name: '',
         city: '',
         teamCoach: '',
         numberOfPlayers: '',
     });
+    const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
 
     // Fetch teams from the database when the component loads
@@ -88,6 +89,11 @@ function TeamManager() {
         }
     };
 
+    // Filter teams based on search query
+    const filteredTeams = teams.filter((team) =>
+        team.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className="team-manager">
             {/* Header */}
@@ -145,12 +151,25 @@ function TeamManager() {
                     </button>
                 </div>
 
+                {/* Search Team Section */}
+                <div className="search-team">
+    <h2 className="search-team-heading">Search Team</h2>
+    <input
+        type="text"
+        placeholder="Search by Team Name"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="search-input"
+    />
+</div>
+
+
                 {/* Display Teams */}
-                {teams.length === 0 && !loading && !error ? (
-                    <p className="empty-state-message">No teams available.</p>
+                {filteredTeams.length === 0 && !loading && !error ? (
+                    <p className="empty-state-message">No teams found.</p>
                 ) : (
                     <ul className="team-list">
-                        {teams.map((team) => (
+                        {filteredTeams.map((team) => (
                             <li key={team._id} className="team-item">
                                 <h3>{team.name}</h3>
                                 <p>City: {team.city}</p>
