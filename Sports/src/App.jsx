@@ -9,7 +9,7 @@ import Ecommerce from './components/Ecommerce';
 import Login from './components/Login'; 
 import Register from './components/Register';
 import GetTicket from './components/GetTicket';  // Import the GetTicket component
-
+import Feedback from './components/Feedback';
 import './styles/global.css'; 
 
 function App() {
@@ -63,7 +63,7 @@ function App() {
                             <Route path="/ground-manager" element={<GroundManager />} />
                             <Route path="/ecommerce" element={<Ecommerce />} />
                             <Route path="/get-ticket" element={<GetTicket />} />  {/* Add the GetTicket route */}
-
+                            <Route path="/feedback" element={<Feedback />} />
                         </>
                         
                     ) : (

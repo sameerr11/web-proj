@@ -1,0 +1,58 @@
+/* Feedback Button */
+.feedback-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #ffdd57;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.feedback-button:hover {
+    background-color: #ffbf00;
+}
+
+/* Feedback Page */
+.feedback-container {
+    padding: 20px;
+    background-color: #f4f4f4;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-container h1 {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.submit-feedback-button {
+    padding: 10px 20px;
+    background-color: #ffdd57;
+    border: none;
+    color: #333;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-feedback-button:hover {
+    background-color: #ffbf00;
+}

@@ -1,4 +1,3 @@
-// Dashboard.jsx
 import React, { useState, useEffect } from 'react';
 import '../styles/dashboard.css';
 import { useNavigate } from 'react-router-dom';
@@ -84,6 +83,12 @@ function Dashboard({ currentView }) {
         <div className="dashboard-container">
             <header className="user-profile">
                 <h1>Welcome, {user.name || 'User'}</h1>
+                {/* Feedback button */}
+                <button 
+                    onClick={() => navigate('/feedback')} 
+                    className="feedback-button">
+                    Feedback
+                </button>
             </header>
 
             <section className="dashboard-options">
