@@ -120,17 +120,19 @@ function Dashboard({ currentView }) {
                             />
                         </div>
                         <ul className="match-list">
-                            {filteredMatches.length > 0 ? (
-                                filteredMatches.map((match) => (
-                                    <li key={match.id} className="match-item">
-                                        <strong>{match.teamA}</strong> vs <strong>{match.teamB}</strong> on{' '}
-                                        {new Date(match.date).toLocaleDateString()} at {match.venue}
-                                    </li>
-                                ))
-                            ) : (
-                                <p>No matches found.</p>
-                            )}
-                        </ul>
+    {filteredMatches.length > 0 ? (
+        filteredMatches.map((match) => (
+            <li key={match.id} className="match-item">
+                <strong>{match.teamA}</strong> vs <strong>{match.teamB}</strong> on{' '}
+                {new Date(match.date).toLocaleDateString()} at {match.venue}{' '}
+                <span className="ticket-price">- Rs. {match.ticketPrice}</span>
+            </li>
+        ))
+    ) : (
+        <p>No matches found.</p>
+    )}
+</ul>
+
                     </>
                 )}
             </section>

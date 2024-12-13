@@ -4,8 +4,8 @@ import '../styles/match-scheduler.css';
 
 function MatchScheduler() {
     const [teams, setTeams] = useState([]);
-    const [match, setMatch] = useState({ teamA: '', teamB: '', venue: '', date: '', time: '' });
-    const navigate = useNavigate(); 
+    const [match, setMatch] = useState({ teamA: '', teamB: '', venue: '', date: '', time: '', ticketPrice: '' });
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('/api/teams')
@@ -15,28 +15,27 @@ function MatchScheduler() {
 
     const scheduleMatch = async (e) => {
         e.preventDefault();
-        if (match.teamA === match.teamB) {
-            alert('Team A and Team B cannot be the same.');
-            return;
-        }
-
+    
+        console.log('Match object being sent:', match); // Log match object before sending
+    
         const response = await fetch('/api/matches', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(match),
         });
-
+    
         if (response.ok) {
             alert('Match Scheduled Successfully');
-            setMatch({ teamA: '', teamB: '', venue: '', date: '', time: '' });
+            setMatch({ teamA: '', teamB: '', venue: '', date: '', time: '', ticketPrice: '' });
         } else {
+            console.error('Failed to schedule match. Response:', await response.json());
             alert('Error scheduling match');
         }
     };
-
+    
+    
     return (
         <div className="match-scheduler-container">
-            {/* Back Button */}
             <button className="back-button" onClick={() => navigate(-1)}>
                 ⬅ Back to Dashboard
             </button>
@@ -101,6 +100,21 @@ function MatchScheduler() {
                         required
                     />
                 </div>
+                <div className="form-group">
+    <label>Ticket Price:</label>
+    <input
+        type="number"
+        placeholder="Ticket Price ($)"
+        value={match.ticketPrice}
+        onChange={(e) => {
+            const value = e.target.value === '' ? '' : parseFloat(e.target.value);
+            setMatch({ ...match, ticketPrice: value });
+        }}
+        required
+    />
+</div>
+
+
                 <button type="submit" className="match-button">
                     Schedule Match
                 </button>

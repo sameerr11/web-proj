@@ -13,23 +13,19 @@ router.get('/', async (req, res) => {
 // Add a team with city, teamCoach, and numberOfPlayers
 router.post('/', async (req, res) => {
     try {
-        const { name, city, teamCoach, numberOfPlayers } = req.body; // Destructure all fields from the request body
+        const { teamA, teamB, venue, date, time, ticketPrice } = req.body;
+        if (!ticketPrice || ticketPrice <= 0) {
+            return res.status(400).json({ message: 'Invalid ticket price' });
+        }
 
-        // Create a new team document
-        const team = new Team({
-            name,
-            city,
-            teamCoach,
-            numberOfPlayers,
-            players: [], // Keep players empty initially
-        });
-
-        await team.save(); // Save to the database
-        res.status(201).json(team); // Return the saved team
+        const match = new Match({ teamA, teamB, venue, date, time, ticketPrice });
+        await match.save();
+        res.status(201).json(match);
     } catch (error) {
-        res.status(400).json({ message: 'Failed to add team', error: error.message });
+        res.status(500).json({ message: 'Error saving match', error });
     }
 });
+
 
 
 
