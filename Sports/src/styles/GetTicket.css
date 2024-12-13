@@ -1,0 +1,128 @@
+/* Get Ticket Container */
+.container {
+    background-image: url('./bg.jpg'); /* Same background image as Dashboard */
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center; /* Centers the background image */
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+    height: 70vh; /* Full viewport height */
+    width: 100%; /* Full width of the viewport */
+    max-width: 1500px; /* Increase the maximum width for larger screens */
+    margin: 0 auto; /* Center the container horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 20px; /* Increased padding for better spacing */
+    color: white; /* Set text color to white for better visibility */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* User Profile (Same style as Dashboard) */
+.user-profile {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.725); /* Slight transparency for background */
+    padding: 30px; /* Increased padding */
+    border-radius: 8px;
+    margin-bottom: 30px; /* Increased bottom margin for better spacing */
+}
+
+.user-profile h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Overview Section */
+.overview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px; /* Increased margin */
+}
+
+/* Match List */
+.match-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 1400px; /* Adjust the width for larger screens */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Increased gap between items */
+}
+
+.match-item {
+    background: rgba(0, 0, 0, 0.6); /* Slight black overlay for contrast */
+    border-radius: 8px;
+    padding: 20px; /* Increased padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.match-item:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.match-info {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.match-info strong {
+    font-size: 1.5rem;
+    color: #ffdd57; /* Highlight important text */
+}
+
+.match-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.ticket-price {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.seats-available {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.buy-now-button {
+    background-color: #ffdd57;
+    color: #333;
+    border: none;
+    padding: 12px 24px; /* Increased padding */
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-now-button:hover {
+    background-color: #ffbf00;
+}
+
+.buy-now-button:disabled {
+    background-color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+/* Scrollable section for large content */
+.overview {
+    max-height: 80vh; /* Prevent content from overflowing the viewport */
+    overflow-y: auto;
+}
+
+/* No matches available message styling */
+.overview p {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 30px;
+    color: #ffdd57; /* Highlight text in a yellowish color */
+}

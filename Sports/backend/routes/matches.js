@@ -40,10 +40,29 @@ router.post('/', async (req, res) => {
 
 router.get('/upcoming', async (req, res) => {
     try {
-        const upcomingMatches = await Match.find({ date: { $gte: new Date() } }).sort('date');
-        res.json(upcomingMatches);
-    } catch (error) {
-        res.status(500).json({ message: 'Failed to fetch upcoming matches' });
+        const matches = await Match.find({ date: { $gte: new Date() } }).sort('date');
+        res.json(matches);
+    } catch (err) {
+        console.error('Error fetching matches:', err);
+        res.status(500).json({ message: 'Error fetching matches' });
+    }
+});
+
+// Update seats after buying tickets (optional)
+router.post('/buy-ticket/:id', async (req, res) => {
+    try {
+        const match = await Match.findById(req.params.id);
+        if (!match) return res.status(404).json({ message: 'Match not found' });
+        if (match.seatsAvailable > 0) {
+            match.seatsAvailable -= 1;
+            await match.save();
+            res.json({ message: 'Ticket purchased', match });
+        } else {
+            res.status(400).json({ message: 'No seats available' });
+        }
+    } catch (err) {
+        console.error('Error buying ticket:', err);
+        res.status(500).json({ message: 'Error buying ticket' });
     }
 });
 

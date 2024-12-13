@@ -1,3 +1,4 @@
+// Dashboard.jsx
 import React, { useState, useEffect } from 'react';
 import '../styles/dashboard.css';
 import { useNavigate } from 'react-router-dom';
@@ -98,6 +99,9 @@ function Dashboard({ currentView }) {
                 <button onClick={() => navigate('/ecommerce')} className="dashboard-button">
                     E-commerce
                 </button>
+                <button onClick={() => navigate('/get-ticket')} className="dashboard-button">
+                    Get Ticket
+                </button>
             </section>
 
             <section className="dashboard-overview">
@@ -120,19 +124,18 @@ function Dashboard({ currentView }) {
                             />
                         </div>
                         <ul className="match-list">
-    {filteredMatches.length > 0 ? (
-        filteredMatches.map((match) => (
-            <li key={match.id} className="match-item">
-                <strong>{match.teamA}</strong> vs <strong>{match.teamB}</strong> on{' '}
-                {new Date(match.date).toLocaleDateString()} at {match.venue}{' '}
-                <span className="ticket-price">- Rs. {match.ticketPrice}</span>
-            </li>
-        ))
-    ) : (
-        <p>No matches found.</p>
-    )}
-</ul>
-
+                            {filteredMatches.length > 0 ? (
+                                filteredMatches.map((match) => (
+                                    <li key={match.id} className="match-item">
+                                        <strong>{match.teamA}</strong> vs <strong>{match.teamB}</strong> on{' '}
+                                        {new Date(match.date).toLocaleDateString()} at {match.venue}{' '}
+                                        <span className="ticket-price">- Rs. {match.ticketPrice}</span>
+                                    </li>
+                                ))
+                            ) : (
+                                <p>No matches found.</p>
+                            )}
+                        </ul>
                     </>
                 )}
             </section>

@@ -8,6 +8,8 @@ import GroundManager from './components/GroundManager';
 import Ecommerce from './components/Ecommerce';
 import Login from './components/Login'; 
 import Register from './components/Register';
+import GetTicket from './components/GetTicket';  // Import the GetTicket component
+
 import './styles/global.css'; 
 
 function App() {
@@ -51,6 +53,7 @@ function App() {
                     {/* If authenticated, show Dashboard and other components */}
                     {isAuthenticated ? (
                         <>
+
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
                             <Route path="/dashboard" element={<Dashboard />} />
@@ -59,6 +62,8 @@ function App() {
                             <Route path="/match-scheduler" element={<MatchScheduler />} />
                             <Route path="/ground-manager" element={<GroundManager />} />
                             <Route path="/ecommerce" element={<Ecommerce />} />
+                            <Route path="/get-ticket" element={<GetTicket />} />  {/* Add the GetTicket route */}
+
                         </>
                         
                     ) : (
