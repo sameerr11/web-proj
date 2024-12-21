@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import '../styles/feedback.css'; // Add your custom styles here
+import { useNavigate } from 'react-router-dom';
+import '../styles/feedback.css';
 
 function Feedback() {
+    const [username, setUsername] = useState('');
     const [feedback, setFeedback] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!feedback) {
-            alert('Please provide your feedback!');
+        if (!username || !feedback) {
+            alert('Please provide your username and feedback!');
             return;
         }
 
@@ -18,14 +21,18 @@ function Feedback() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ feedback }),
+                body: JSON.stringify({ username, feedback }),
             });
 
+            const data = await response.json(); // Parse the response data
+
+            console.log('Feedback Response:', data);
             if (response.ok) {
-                alert('Thank you for your feedback!');
+                setUsername('');
                 setFeedback('');
+                alert('Thank you for your feedback!');
             } else {
-                alert('Failed to submit feedback. Please try again later.');
+                alert(data.message || 'Failed to submit feedback. Please try again later.');
             }
         } catch (error) {
             console.error('Error submitting feedback:', error);
@@ -36,7 +43,17 @@ function Feedback() {
     return (
         <div className="feedback-container">
             <h1>Submit Your Feedback</h1>
+            <button onClick={() => navigate('/')} className="back-button">
+                ⬅ Back to Dashboard
+            </button>
             <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="Your Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
                 <textarea
                     placeholder="Your feedback..."
                     value={feedback}

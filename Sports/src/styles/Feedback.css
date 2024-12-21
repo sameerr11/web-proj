@@ -1,15 +1,69 @@
+/* Feedback Page */
+.feedback-container {
+    width: 120%; /* Increase width to almost fill the screen */
+    height: auto; /* Allow height to adjust dynamically */
+    max-height: 100vh; /* Ensure it fits within the viewport */
+    margin: auto; /* Center horizontally */
+    padding: 40px; /* Extra padding for better spacing */
+    background: url('./bg.jpg'); /* Same background image as the dashboard */
+    background-size: contain; /* Ensure the image fits without cropping */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Start content from the top */
+    align-items: center;
+    color: #fff;
+    border-radius: 12px; /* Slightly larger border radius */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Stronger shadow for emphasis */
+    overflow-y: auto; /* Enable scrolling for overflow content */
+}
+
+.feedback-container h1 {
+    margin-bottom: 30px; /* Extra spacing below the title */
+    font-size: 2.8rem; /* Larger font size for better visibility */
+    color: #fff;
+}
+
+textarea {
+    width: 100%;
+    max-width: 1000px; /* Even wider textarea */
+    padding: 20px; /* More comfortable padding */
+    font-size: 1.4rem; /* Larger font size for readability */
+    border-radius: 10px; /* Slightly larger radius */
+    border: 1px solid #ddd;
+    margin-bottom: 30px; /* More spacing below textarea */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Stronger shadow for textarea */
+}
+
+.submit-feedback-button {
+    padding: 15px 30px; /* Larger button size */
+    background-color: #74ebd5;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem; /* Larger font size */
+    border-radius: 10px; /* More rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-feedback-button:hover {
+    background-color: #56cfe1;
+    transform: translateY(-3px); /* Subtle hover effect */
+}
+
 /* Feedback Button */
 .feedback-button {
     position: absolute;
     top: 20px;
     right: 20px;
-    padding: 10px 20px;
+    padding: 15px 25px; /* Larger feedback button */
     background-color: #ffdd57;
     color: #333;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* More rounded corners */
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.2rem; /* Slightly larger font size */
     transition: background-color 0.3s;
 }
 
@@ -17,42 +71,20 @@
     background-color: #ffbf00;
 }
 
-/* Feedback Page */
-.feedback-container {
-    padding: 20px;
-    background-color: #f4f4f4;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feedback-container {
+        width: 95%; /* Slightly smaller on mobile */
+        max-height: 90vh; /* Ensure it fits on smaller screens */
+    }
 
-.feedback-container h1 {
-    margin-bottom: 20px;
-}
+    textarea {
+        max-width: 90%; /* Adjust textarea width for mobile */
+        font-size: 1.2rem;
+    }
 
-textarea {
-    width: 100%;
-    max-width: 600px;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-}
-
-.submit-feedback-button {
-    padding: 10px 20px;
-    background-color: #ffdd57;
-    border: none;
-    color: #333;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.submit-feedback-button:hover {
-    background-color: #ffbf00;
+    .submit-feedback-button {
+        font-size: 1.2rem;
+        padding: 12px 20px;
+    }
 }
