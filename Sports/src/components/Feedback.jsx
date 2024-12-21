@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles/feedback.css';
+import '../styles/feedback.css'; // Add your custom styles here
 
 function Feedback() {
     const [username, setUsername] = useState('');
     const [feedback, setFeedback] = useState('');
-    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,7 +14,7 @@ function Feedback() {
         }
 
         try {
-            const response = await fetch('/api/feedback', {
+            const response = await fetch('http://localhost:5000/api/feedback', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,9 +41,6 @@ function Feedback() {
     return (
         <div className="feedback-container">
             <h1>Submit Your Feedback</h1>
-            <button onClick={() => navigate('/')} className="back-button">
-                ⬅ Back to Dashboard
-            </button>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -55,16 +50,23 @@ function Feedback() {
                     required
                 />
                 <textarea
-                    placeholder="Your feedback..."
+                    placeholder="Share your thoughts about your sports experience..."
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
                     rows="6"
                     required
                 />
-                <button type="submit" className="submit-feedback-button">Submit</button>
+                <button type="submit" className="submit-feedback-button">
+                    Submit
+                </button>
             </form>
         </div>
-    );
+        <button className="back-button" onClick={() => navigate(-1)}>
+            ⬅ Back to Dashboard
+        </button>
+    </div>
+);
+
 }
 
 export default Feedback;

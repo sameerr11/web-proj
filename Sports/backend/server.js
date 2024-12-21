@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+=======
+require('dotenv').config(); // Load environment variables
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+>>>>>>> 5a2ce8918b69bf13f055d7809bf26b96dfd4b192
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -27,14 +34,22 @@ const matchRoutes = require('./routes/matches');
 const userRoutes = require('./routes/users');
 const groundRoutes = require('./routes/grounds');
 const authRoutes = require('./routes/authRoutes');
+<<<<<<< HEAD
 const feedbackRoutes = require('./routes/feedback');
+=======
+const feedbackRoutes = require('./routes/feedbackRoutes'); // Import feedback routes
+>>>>>>> 5a2ce8918b69bf13f055d7809bf26b96dfd4b192
 
 app.use('/api/teams', teamRoutes);
 app.use('/api/matches', matchRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/grounds', groundRoutes);
 app.use('/api/auth', authRoutes);
+<<<<<<< HEAD
 app.use('/api/feedback', feedbackRoutes);
+=======
+app.use('/api/feedback', feedbackRoutes); // Add feedback route
+>>>>>>> 5a2ce8918b69bf13f055d7809bf26b96dfd4b192
 
 // Default Route
 app.get('/', (req, res) => {
