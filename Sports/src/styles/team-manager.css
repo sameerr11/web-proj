@@ -7,6 +7,7 @@
     width: 500PX;
     font-family: Arial, sans-serif;
     background: url('./bg.jpg');
+    background-size: contain;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.385);
 }
@@ -171,27 +172,26 @@
     transform: scale(1.05);
 }
 
-
 .search-team {
-    margin-top: 20px; /* Add some space at the top */
-    text-align: center; /* Center align the content */
+    margin-top: 20px; 
+    text-align: center; 
 }
 
 .search-team-heading {
-    font-size: 1.5rem; /* Adjust heading size */
-    margin-bottom: 10px; /* Add space below the heading */
-    color: #d1c9c9; /* Darker shade for the heading */
-    font-weight: bold; /* Make the heading stand out */
+    font-size: 1.5rem; 
+    margin-bottom: 10px; 
+    color: #d1c9c9; 
+    font-weight: bold; 
 }
 
 .search-input {
-    width: 80%; /* Ensure it fits nicely below the heading */
-    max-width: 400px; /* Limit the max width for larger screens */
+    width: 80%;
+    max-width: 400px; 
     padding: 10px 15px;
-    margin: 0 auto; /* Center horizontally */
+    margin: 0 auto; 
     font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 25px; /* Rounded corners */
+    border-radius: 25px; 
     outline: none;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

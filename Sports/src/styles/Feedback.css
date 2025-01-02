@@ -10,11 +10,17 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .feedback-button:hover {
     background-color: #ffbf00;
+    transform: translateY(-2px);
+}
+
+.feedback-button:focus {
+    outline: 2px solid #ffbf00; 
+    outline-offset: 4px;
 }
 
 /* Feedback Page */
@@ -27,7 +33,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background: url('bg.jpg') no-repeat center center;
-    background-size: cover;
+    background-size: cover; 
     height: auto;
     display: flex;
     flex-direction: column;
@@ -45,17 +51,25 @@
 .feedback-container input,
 .feedback-container textarea {
     width: 100%;
-    max-width: 600px;
     margin: 10px 0;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
     box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback-container input:focus,
+.feedback-container textarea:focus {
+    border-color: #ffdd57; 
+    box-shadow: 0 0 5px rgba(255, 221, 87, 0.5);
+    outline: none;
 }
 
 .feedback-container textarea {
     height: 120px;
+    resize: vertical; 
 }
 
 .back-button {
@@ -66,16 +80,21 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .back-button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px); 
+}
+
+.back-button:focus {
+    outline: 2px solid #0056b3; 
+    outline-offset: 4px;
 }
 
 .feedback-container .submit-feedback-button {
     width: 100%;
-    max-width: 600px;
     padding: 10px 20px;
     background-color: #ffdd57;
     border: none;
@@ -83,10 +102,38 @@
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     margin-top: 10px;
 }
 
 .feedback-container .submit-feedback-button:hover {
     background-color: #ffbf00;
+    transform: translateY(-2px); 
+}
+
+.feedback-container .submit-feedback-button:focus {
+    outline: 2px solid #ffbf00; 
+    outline-offset: 4px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .feedback-container {
+        padding: 15px;
+    }
+
+    .feedback-container input,
+    .feedback-container textarea {
+        font-size: 0.9rem;
+    }
+
+    .back-button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .feedback-container .submit-feedback-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
 }

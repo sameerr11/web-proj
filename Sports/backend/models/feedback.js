@@ -6,4 +6,4 @@ const FeedbackSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Feedback', FeedbackSchema, 'feedbacks'); // Explicitly set collection name to 'feedbacks'
+module.exports = mongoose.model('Feedback', FeedbackSchema, 'feedbacks'); 

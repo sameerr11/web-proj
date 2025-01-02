@@ -6,6 +6,7 @@
     padding: 30px;
     font-family: 'Arial', sans-serif;
     background: url('./bg.jpg');
+    background-size: contain;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     text-align: center;

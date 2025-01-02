@@ -16,7 +16,7 @@ function MatchScheduler() {
     const scheduleMatch = async (e) => {
         e.preventDefault();
     
-        console.log('Match object being sent:', match); // Log match object before sending
+        console.log('Match object being sent:', match);
     
         const response = await fetch('/api/matches', {
             method: 'POST',

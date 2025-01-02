@@ -1,67 +1,69 @@
-/* Get Ticket Container */
+/* Container for the Get Ticket Section */
 .container {
-    background-image: url('./bg.jpg'); /* Same background image as Dashboard */
-    background-size: cover; /* Ensures the image covers the entire container */
-    background-position: center; /* Centers the background image */
-    background-attachment: fixed; /* Keeps the background fixed during scrolling */
-    height: 70vh; /* Full viewport height */
-    width: 100%; /* Full width of the viewport */
-    max-width: 1500px; /* Increase the maximum width for larger screens */
-    margin: 0 auto; /* Center the container horizontally */
+    background-image: url('./bg.jpg');
+    background-size: auto; 
+    background-position: center;
+    background-attachment: fixed;
+    height: 60vh;
+    width: 100%; 
+    max-width: 2000px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 40px 20px; /* Increased padding for better spacing */
-    color: white; /* Set text color to white for better visibility */
-    overflow-y: auto; /* Allow scrolling if content overflows */
+    padding: 40px 20px;
+    color: #fff;
+    border-radius: 12px;
+    margin-top: 20px;
+    overflow-y: auto;
 }
 
-/* User Profile (Same style as Dashboard) */
 .user-profile {
     text-align: center;
-    background: rgba(0, 0, 0, 0.725); /* Slight transparency for background */
-    padding: 30px; /* Increased padding */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 25px;
     border-radius: 8px;
-    margin-bottom: 30px; /* Increased bottom margin for better spacing */
+    margin-bottom: 30px;
 }
 
 .user-profile h1 {
     font-size: 2.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
-/* Overview Section */
 .overview {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px; /* Increased margin */
+    margin-top: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
-/* Match List */
 .match-list {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     width: 100%;
-    max-width: 1400px; /* Adjust the width for larger screens */
+    max-width: 460px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Increased gap between items */
+    gap: 20px;
 }
 
 .match-item {
-    background: rgba(0, 0, 0, 0.6); /* Slight black overlay for contrast */
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 8px;
-    padding: 20px; /* Increased padding */
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .match-item:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .match-info {
@@ -73,7 +75,7 @@
 
 .match-info strong {
     font-size: 1.5rem;
-    color: #ffdd57; /* Highlight important text */
+    color: #ffdd57;
 }
 
 .match-actions {
@@ -97,32 +99,47 @@
     background-color: #ffdd57;
     color: #333;
     border: none;
-    padding: 12px 24px; /* Increased padding */
+    padding: 12px 24px;
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .buy-now-button:hover {
     background-color: #ffbf00;
+    transform: translateY(-2px);
 }
 
 .buy-now-button:disabled {
     background-color: #d3d3d3;
     cursor: not-allowed;
+    transform: none;
 }
 
-/* Scrollable section for large content */
-.overview {
-    max-height: 80vh; /* Prevent content from overflowing the viewport */
-    overflow-y: auto;
+.buy-now-button:focus {
+    outline: 2px solid #ffbf00;
+    outline-offset: 4px;
 }
 
-/* No matches available message styling */
 .overview p {
     font-size: 1.5rem;
     text-align: center;
     margin-top: 30px;
-    color: #ffdd57; /* Highlight text in a yellowish color */
+    color: #ffdd57;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .match-info strong {
+        font-size: 1.2rem;
+    }
+
+    .buy-now-button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
 }

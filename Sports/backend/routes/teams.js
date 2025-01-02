@@ -8,9 +8,6 @@ router.get('/', async (req, res) => {
     res.json(teams);
 });
 
-// Add a team
-// Add a team with city and teamCoach
-// Add a team with city, teamCoach, and numberOfPlayers
 router.post('/', async (req, res) => {
     try {
         const { teamA, teamB, venue, date, time, ticketPrice } = req.body;

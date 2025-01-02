@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import '../styles/GetTicket.css';
 
 function GetTicket() {
     const [matches, setMatches] = useState([]);
-    const navigate = useNavigate(); // Initialize navigate
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMatches = async () => {
@@ -13,7 +13,7 @@ function GetTicket() {
                 const data = await response.json();
                 const matchesWithSeats = data.map(match => ({
                     ...match,
-                    seatsAvailable: match.seatsAvailable || 1000 // Default seats to 1000
+                    seatsAvailable: match.seatsAvailable || 1000
                 }));
                 setMatches(matchesWithSeats);
             } catch (error) {
@@ -32,7 +32,6 @@ function GetTicket() {
                     : match
             )
         );
-        // Optionally, send the updated seat count to the backend here.
     };
 
     return (

@@ -69,7 +69,7 @@ function Ecommerce() {
     ];
 
     const addToCart = (product) => {
-        setCart([...cart, product]); // Add product to the cart
+        setCart([...cart, product]);
     };
 
     return (

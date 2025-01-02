@@ -10,14 +10,14 @@ router.get('/', async (req, res) => {
 
 
 router.use((req, res, next) => {
-    console.log(`${req.method} ${req.path} - Body:`, req.body); // Logs all requests
+    console.log(`${req.method} ${req.path} - Body:`, req.body); 
     next();
 });
 
 router.post('/', async (req, res) => {
     const { teamA, teamB, venue, date, time, ticketPrice } = req.body;
 
-    console.log('POST body received:', req.body); // Debugging log
+    console.log('POST body received:', req.body); 
 
     if (!teamA || !teamB || !venue || !date || !time || ticketPrice == null) {
         console.log('Validation failed. Missing required fields.');
@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
     try {
         const match = new Match({ teamA, teamB, venue, date, time, ticketPrice });
         await match.save();
-        console.log('Match saved:', match); // Confirms save success
+        console.log('Match saved:', match); 
         res.status(201).json(match);
     } catch (error) {
         console.error('Error saving match:', error);

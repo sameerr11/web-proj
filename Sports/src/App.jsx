@@ -8,7 +8,7 @@ import GroundManager from './components/GroundManager';
 import Ecommerce from './components/Ecommerce';
 import Login from './components/Login'; 
 import Register from './components/Register';
-import GetTicket from './components/GetTicket';  // Import the GetTicket component
+import GetTicket from './components/GetTicket';
 import Feedback from './components/Feedback';
 import './styles/global.css'; 
 
@@ -62,7 +62,7 @@ function App() {
                             <Route path="/match-scheduler" element={<MatchScheduler />} />
                             <Route path="/ground-manager" element={<GroundManager />} />
                             <Route path="/ecommerce" element={<Ecommerce />} />
-                            <Route path="/get-ticket" element={<GetTicket />} />  {/* Add the GetTicket route */}
+                            <Route path="/get-ticket" element={<GetTicket />} />
                             <Route path="/feedback" element={<Feedback />} />
                         </>
                         

@@ -7,7 +7,7 @@ const MatchSchema = new mongoose.Schema({
     date: { type: Date, required: true },
     time: { type: String, required: true },
     ticketPrice: { type: Number, required: true },
-    seatsAvailable: { type: Number, default: 1000 }, // Add ticket price field
+    seatsAvailable: { type: Number, default: 1000 },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Match', MatchSchema);
