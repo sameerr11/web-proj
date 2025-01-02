@@ -162,8 +162,6 @@ function TeamManager() {
         className="search-input"
     />
 </div>
-
-
                 {/* Display Teams */}
                 {filteredTeams.length === 0 && !loading && !error ? (
                     <p className="empty-state-message">No teams found.</p>

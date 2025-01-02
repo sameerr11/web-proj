@@ -10,35 +10,36 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { teamA, teamB, venue, date, time, ticketPrice } = req.body;
-        if (!ticketPrice || ticketPrice <= 0) {
-            return res.status(400).json({ message: 'Invalid ticket price' });
-        }
+        const { name, city, teamCoach, numberOfPlayers } = req.body;
 
-        const match = new Match({ teamA, teamB, venue, date, time, ticketPrice });
-        await match.save();
-        res.status(201).json(match);
+        const team = new Team({
+            name,
+            city,
+            teamCoach,
+            numberOfPlayers,
+            players: [],
+        });
+
+        await team.save(); // Save to the database
+        res.status(201).json(team); // Return the saved team
     } catch (error) {
-        res.status(500).json({ message: 'Error saving match', error });
+        res.status(400).json({ message: 'Failed to add team', error: error.message });
     }
 });
-
-
-
 
 router.put('/:id', async (req, res) => {
     try {
         const updatedTeam = await Team.findByIdAndUpdate(
-            req.params.id,       // Get the team ID from the URL parameter
-            req.body,             // Use the request body to update the team
-            { new: true }         // Return the updated document
+            req.params.id,      
+            req.body,    
+            { new: true }   
         );
 
         if (!updatedTeam) {
             return res.status(404).json({ message: 'Team not found' });
         }
 
-        res.status(200).json(updatedTeam);  // Send back the updated team
+        res.status(200).json(updatedTeam);
     } catch (err) {
         res.status(400).json({ message: 'Failed to update team', error: err.message });
     }
@@ -58,8 +59,5 @@ router.delete('/:id', async (req, res) => {
         res.status(400).json({ message: 'Failed to delete team', error: err.message });
     }
 });
-
-
-
 
 module.exports = router;

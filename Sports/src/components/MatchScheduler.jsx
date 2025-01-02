@@ -15,6 +15,10 @@ function MatchScheduler() {
 
     const scheduleMatch = async (e) => {
         e.preventDefault();
+        if (match.teamA === match.teamB) {
+            alert('Team A and Team B cannot be the same.');
+            return;
+        }
     
         console.log('Match object being sent:', match);
     
