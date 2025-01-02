@@ -4,12 +4,6 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-
-require('dotenv').config(); // Load environment variables
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -35,7 +29,6 @@ const userRoutes = require('./routes/users');
 const groundRoutes = require('./routes/grounds');
 const authRoutes = require('./routes/authRoutes');
 const feedbackRoutes = require('./routes/feedback');
-const feedbackRoutes = require('./routes/feedbackRoutes'); // Import feedback routes
 
 app.use('/api/teams', teamRoutes);
 app.use('/api/matches', matchRoutes);
@@ -43,7 +36,6 @@ app.use('/api/users', userRoutes);
 app.use('/api/grounds', groundRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/feedback', feedbackRoutes);
-app.use('/api/feedback', feedbackRoutes); // Add feedback route
 
 // Default Route
 app.get('/', (req, res) => {
