@@ -1,6 +1,6 @@
 /* General Container Styles */
 .ground-manager {
-    max-width: 90%; 
+    max-width: 100%; 
     width: 500px;
     background: url('./bg.jpg');
     margin: 40px auto;
@@ -32,9 +32,11 @@
     transition: background-color 0.3s ease, transform 0.2s;
 }
 
-.back-button:hover {
+.back-button:hover,
+.add-ground-form button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
+    transition-duration: 0.4s;
 }
 
 .ground-manager h2 {
@@ -57,11 +59,11 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
-    gap: 15px;
+    gap: 10px;
 }
 
 .add-ground-form input {
-    width: 90%;
+    width: 100%;
     padding: 12px;
     font-size: 14px;
     border: 1px solid #ddd;
@@ -111,6 +113,11 @@
     transition: box-shadow 0.3s ease, transform 0.2s;
 }
 
+.ground-manager:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
 .ground-item:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     transform: scale(1.02);
@@ -124,7 +131,7 @@
 }
 
 .ground-item p {
-    color: #050000;
+    color: #333333;
     font-weight: bold;
     font-size: 14px;
     margin: 5px 0;
@@ -135,26 +142,36 @@
 @media (max-width: 768px) {
     .ground-manager {
         width: 100%; 
-        max-width: 100%; 
-        padding: 20px;
+        padding: 15px;
     }
 
     h2 {
-        font-size: 24px; 
+        font-size: 22px;
     }
 
     .back-button,
     .add-ground-form button {
-        font-size: 14px;
-        padding: 10px 20px;
+        font-size: 12px;
+        padding: 8px 18px;
+    }
+
+    /* Add Ground Form */
+    .add-ground-form {
+        display: flex;
+        background: rgba(0, 0, 0, 0.641);
+        padding: 15px;
+        border-radius: 8px;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+        gap: 10px;
     }
 
     .add-ground-form input {
-        width: 100%; 
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .ground-item {
-        padding: 15px; 
+        padding: 10px; 
     }
 }
