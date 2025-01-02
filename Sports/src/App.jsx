@@ -11,6 +11,7 @@ import Register from './components/Register';
 import GetTicket from './components/GetTicket';
 import Feedback from './components/Feedback';
 import './styles/global.css'; 
+import Profile from './components/Profile';
 
 function App() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -30,7 +31,7 @@ function App() {
     // Toggle the theme when button is clicked
     const toggleTheme = () => {
         const newMode = isDarkMode ? 'light' : 'dark';
-        setIsDarkMode(!isDarkMode); // Update state
+        setIsDarkMode(!isDarkMode); 
 
         // Remove the previous mode class and add the new mode class
         document.body.classList.remove(isDarkMode ? 'dark-mode' : 'light-mode');
@@ -53,17 +54,17 @@ function App() {
                     {/* If authenticated, show Dashboard and other components */}
                     {isAuthenticated ? (
                         <>
-
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/register" element={<Register />} />
-                            <Route path="/dashboard" element={<Dashboard />} />
-                            <Route path="/" element={<DashboardContainer />} />
-                            <Route path="/team-manager" element={<TeamManager />} />
-                            <Route path="/match-scheduler" element={<MatchScheduler />} />
-                            <Route path="/ground-manager" element={<GroundManager />} />
-                            <Route path="/ecommerce" element={<Ecommerce />} />
-                            <Route path="/get-ticket" element={<GetTicket />} />
-                            <Route path="/feedback" element={<Feedback />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/" element={<DashboardContainer />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/team-manager" element={<TeamManager />} />
+                        <Route path="/match-scheduler" element={<MatchScheduler />} />
+                        <Route path="/ground-manager" element={<GroundManager />} />
+                        <Route path="/ecommerce" element={<Ecommerce />} />
+                        <Route path="/get-ticket" element={<GetTicket />} />
+                        <Route path="/feedback" element={<Feedback />} />
                         </>
                         
                     ) : (

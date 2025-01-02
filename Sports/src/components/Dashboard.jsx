@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 function Dashboard({ currentView }) {
     const [user, setUser] = useState({ name: '', email: '', profilePicture: '' });
     const [upcomingMatches, setUpcomingMatches] = useState([]);
-    const [financialStats, setFinancialStats] = useState({ totalEarnings: 0, expenses: 0 });
     const [searchQuery, setSearchQuery] = useState('');
     const [filterDate, setFilterDate] = useState('');
     const navigate = useNavigate();
@@ -79,14 +78,25 @@ function Dashboard({ currentView }) {
         );
     });
 
+    const handleProfileClick = () => {
+        navigate('/profile');
+    };
+    
     return (
         <div className="dashboard-container">
+            {/* Profile Button */}
+            <button className="profile-button" onClick={handleProfileClick}>
+                <img
+                    src={user.profilePicture || '/assets/default-profile.png'}
+                    alt="Profile"
+                    className="profile-picture"
+                />
+                {user.name || 'Profile'}
+            </button>
+
             <header className="user-profile">
                 <h1>Welcome, {user.name || 'User'}</h1>
-                {/* Feedback button */}
-                <button 
-                    onClick={() => navigate('/feedback')} 
-                    className="feedback-button">
+                <button onClick={() => navigate('/feedback')} className="feedback-button">
                     Feedback
                 </button>
             </header>

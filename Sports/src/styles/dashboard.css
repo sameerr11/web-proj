@@ -149,3 +149,25 @@
         font-size: 18px;
     }
 }
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-button .profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-button:hover {
+    opacity: 0.8;
+}
