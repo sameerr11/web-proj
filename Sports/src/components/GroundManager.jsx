@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/ground-manager.css'; 
-import { useNavigate } from 'react-router-dom'; 
+import '../styles/ground-manager.css';
+import { useNavigate } from 'react-router-dom';
 
 function GroundManager() {
     const [grounds, setGrounds] = useState([]);
     const [newGround, setNewGround] = useState({ name: '', location: '', capacity: '', facilities: '' });
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('/api/grounds')
             .then((res) => res.json())
-            .then((data) => setGrounds(data));
+            .then((data) => setGrounds(data))
+            .catch((error) => console.error('Error fetching grounds:', error));
     }, []);
 
     const addGround = async (e) => {
@@ -28,8 +29,31 @@ function GroundManager() {
             const addedGround = await response.json();
             setGrounds([...grounds, addedGround]);
             setNewGround({ name: '', location: '', capacity: '', facilities: '' });
+        } else {
+            console.error('Error adding ground:', response);
         }
     };
+
+    const handleDeleteGround = async (groundId) => {
+        try {
+            const response = await fetch(`/api/grounds/${groundId}`, {
+                method: 'DELETE',
+            });
+    
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Failed to delete ground:', errorData);
+                alert('Failed to delete the ground. Please try again.');
+                return;
+            }
+    
+            console.log('Ground deleted successfully');
+            setGrounds(grounds.filter((ground) => ground._id !== groundId));
+        } catch (error) {
+            console.error('Error deleting ground:', error);
+            alert('Error deleting ground. Please try again.');
+        }
+    };    
 
     return (
         <div className="ground-manager">
@@ -79,6 +103,12 @@ function GroundManager() {
                         <p>Location: {ground.location}</p>
                         <p>Capacity: {ground.capacity || 'N/A'}</p>
                         <p>Facilities: {ground.facilities.join(', ')}</p>
+                        <button
+                            className="delete-ground-button"
+                            onClick={() => handleDeleteGround(ground._id)}
+                        >
+                            Delete Ground
+                        </button>
                     </li>
                 ))}
             </ul>

@@ -239,3 +239,22 @@
         font-size: 14px;
     }
 }
+
+.delete-team-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-team-button:hover {
+    background-color: #c82333;
+}
+
+.delete-team-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
