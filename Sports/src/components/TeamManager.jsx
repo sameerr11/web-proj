@@ -12,10 +12,10 @@ function TeamManager() {
         teamCoach: '',
         numberOfPlayers: '',
     });
+    const [editTeam, setEditTeam] = useState(null); // State for editing a team
     const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
 
-    // Fetch teams from the database when the component loads
     useEffect(() => {
         fetchTeams();
     }, []);
@@ -23,7 +23,6 @@ function TeamManager() {
     const fetchTeams = async () => {
         setLoading(true);
         setError(null);
-
         try {
             const response = await fetch('/api/teams');
             if (!response.ok) {
@@ -38,7 +37,6 @@ function TeamManager() {
         }
     };
 
-    // Handle input changes for adding a new team
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setNewTeam({
@@ -47,11 +45,9 @@ function TeamManager() {
         });
     };
 
-    // Add a new team
     const handleAddTeam = async () => {
         setLoading(true);
         setError(null);
-
         try {
             const response = await fetch('/api/teams', {
                 method: 'POST',
@@ -65,17 +61,11 @@ function TeamManager() {
                     numberOfPlayers: parseInt(newTeam.numberOfPlayers, 10),
                 }),
             });
-
             if (!response.ok) {
                 throw new Error('Failed to add team');
             }
-
             const addedTeam = await response.json();
-
-            // Add the new team at the top of the list
             setTeams((prevTeams) => [addedTeam, ...prevTeams]);
-
-            // Clear the input fields
             setNewTeam({
                 name: '',
                 city: '',
@@ -89,21 +79,16 @@ function TeamManager() {
         }
     };
 
-    // Delete a team
     const handleDeleteTeam = async (teamId) => {
         setLoading(true);
         setError(null);
-
         try {
             const response = await fetch(`/api/teams/${teamId}`, {
                 method: 'DELETE',
             });
-
             if (!response.ok) {
                 throw new Error('Failed to delete team');
             }
-
-            // Remove the deleted team from the state
             setTeams(teams.filter((team) => team._id !== teamId));
         } catch (err) {
             setError(err.message);
@@ -112,30 +97,64 @@ function TeamManager() {
         }
     };
 
-    // Filter teams based on search query
+    const handleEditInputChange = (e) => {
+        const { name, value } = e.target;
+        setEditTeam({
+            ...editTeam,
+            [name]: value,
+        });
+    };
+
+    const handleEditTeam = (team) => {
+        setEditTeam(team); // Set the team to be edited
+    };
+
+    const handleSaveEdit = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await fetch(`/api/teams/${editTeam._id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: editTeam.name,
+                    city: editTeam.city,
+                    teamCoach: editTeam.teamCoach,
+                    numberOfPlayers: parseInt(editTeam.numberOfPlayers, 10),
+                }),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to update team');
+            }
+            const updatedTeam = await response.json();
+            setTeams((prevTeams) =>
+                prevTeams.map((team) => (team._id === updatedTeam._id ? updatedTeam : team))
+            );
+            setEditTeam(null); // Clear the edit state
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const filteredTeams = teams.filter((team) =>
         team.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     return (
         <div className="team-manager">
-            {/* Header */}
             <header className="team-manager-header">
                 <h2>Manage Teams</h2>
                 <button onClick={() => navigate('/')} className="back-button">
                     ⬅ Back to Dashboard
                 </button>
             </header>
-
-            {/* Add Team Section */}
             <section className="team-manager-content">
-                {/* Loading state */}
                 {loading && <p>Loading...</p>}
-
-                {/* Error handling */}
                 {error && <p className="error-message">Error: {error}</p>}
-
-                {/* Add Team Form */}
                 <div className="add-team-form">
                     <input
                         type="text"
@@ -165,16 +184,10 @@ function TeamManager() {
                         value={newTeam.numberOfPlayers}
                         onChange={handleInputChange}
                     />
-                    <button
-                        onClick={handleAddTeam}
-                        className="fetch-teams-button"
-                        disabled={loading}
-                    >
+                    <button onClick={handleAddTeam} className="fetch-teams-button" disabled={loading}>
                         {loading ? 'Adding Team...' : 'Add Team'}
                     </button>
                 </div>
-
-                {/* Search Team Section */}
                 <div className="search-team">
                     <h2 className="search-team-heading">Search Team</h2>
                     <input
@@ -185,8 +198,6 @@ function TeamManager() {
                         className="search-input"
                     />
                 </div>
-
-                {/* Display Teams */}
                 {filteredTeams.length === 0 && !loading && !error ? (
                     <p className="empty-state-message">No teams found.</p>
                 ) : (
@@ -204,9 +215,52 @@ function TeamManager() {
                                 >
                                     {loading ? 'Deleting...' : 'Delete Team'}
                                 </button>
+                                <button
+                                    onClick={() => handleEditTeam(team)}
+                                    className="delete-team-button"
+                                    disabled={loading}
+                                >
+                                    Edit Team
+                                </button>
                             </li>
                         ))}
                     </ul>
+                )}
+                {editTeam && (
+                    <div className="edit-team-form">
+                        <h2>Edit Team</h2>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Team Name"
+                            value={editTeam.name}
+                            onChange={handleEditInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="city"
+                            placeholder="City"
+                            value={editTeam.city}
+                            onChange={handleEditInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="teamCoach"
+                            placeholder="Team Coach"
+                            value={editTeam.teamCoach}
+                            onChange={handleEditInputChange}
+                        />
+                        <input
+                            type="number"
+                            name="numberOfPlayers"
+                            placeholder="Number of Players"
+                            value={editTeam.numberOfPlayers}
+                            onChange={handleEditInputChange}
+                        />
+                        <button onClick={handleSaveEdit} disabled={loading}>
+                            {loading ? 'Saving...' : 'Save Changes'}
+                        </button>
+                    </div>
                 )}
             </section>
         </div>
