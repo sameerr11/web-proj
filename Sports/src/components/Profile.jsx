@@ -83,7 +83,7 @@ function Profile() {
 
             {/* User Info */}
             <img
-                src={user.profilePicture || '/assets/default-profile.png'}
+                src={user.profilePicture || '../images.png'}
                 alt="Profile"
                 className="profile-picture"
             />
