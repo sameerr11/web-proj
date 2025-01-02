@@ -33,28 +33,7 @@ function GroundManager() {
             console.error('Error adding ground:', response);
         }
     };
-
-    const handleDeleteGround = async (groundId) => {
-        try {
-            const response = await fetch(`/api/grounds/${groundId}`, {
-                method: 'DELETE',
-            });
     
-            if (!response.ok) {
-                const errorData = await response.json();
-                console.error('Failed to delete ground:', errorData);
-                alert('Failed to delete the ground. Please try again.');
-                return;
-            }
-    
-            console.log('Ground deleted successfully');
-            setGrounds(grounds.filter((ground) => ground._id !== groundId));
-        } catch (error) {
-            console.error('Error deleting ground:', error);
-            alert('Error deleting ground. Please try again.');
-        }
-    };    
-
     return (
         <div className="ground-manager">
             {/* Back Button */}
@@ -103,12 +82,6 @@ function GroundManager() {
                         <p>Location: {ground.location}</p>
                         <p>Capacity: {ground.capacity || 'N/A'}</p>
                         <p>Facilities: {ground.facilities.join(', ')}</p>
-                        <button
-                            className="delete-ground-button"
-                            onClick={() => handleDeleteGround(ground._id)}
-                        >
-                            Delete Ground
-                        </button>
                     </li>
                 ))}
             </ul>
