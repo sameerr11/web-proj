@@ -4,6 +4,8 @@ const Ground = require('../models/Ground');
 
 // Get all grounds
 router.get('/', async (req, res) => {
+    const grounds = await Ground.find();
+    res.json(grounds);
     try {
         const grounds = await Ground.find();
         res.json(grounds); // Return the list of all grounds
@@ -15,6 +17,9 @@ router.get('/', async (req, res) => {
 
 // Add a new ground
 router.post('/', async (req, res) => {
+    const ground = new Ground(req.body);
+    await ground.save();
+    res.status(201).json(ground);
     try {
         const { name, location, capacity, facilities } = req.body;
 
