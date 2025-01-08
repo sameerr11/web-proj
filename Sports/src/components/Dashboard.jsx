@@ -51,19 +51,6 @@ function Dashboard({ currentView }) {
         fetchMatches();
     }, []);
 
-    useEffect(() => {
-        const fetchFinancialStats = async () => {
-            try {
-                const response = await fetch('/api/financial-stats');
-                const data = await response.json();
-                setFinancialStats(data);
-            } catch (error) {
-                console.error('Error fetching financial stats:', error);
-            }
-        };
-        fetchFinancialStats();
-    }, []);
-
     const handleLogout = () => {
         localStorage.removeItem('token');
         navigate('/login');
@@ -87,7 +74,7 @@ function Dashboard({ currentView }) {
             {/* Profile Button */}
             <button className="profile-button" onClick={handleProfileClick}>
                 <img
-                    src={user.profilePicture || '/assets/default-profile.png'}
+                    src={user.profilePicture ? `http://localhost:5000${user.profilePicture}` : '../images.png'}
                     alt="Profile"
                     className="profile-picture"
                 />

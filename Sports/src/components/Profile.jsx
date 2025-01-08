@@ -12,6 +12,7 @@ function Profile() {
     const [amountToAdd, setAmountToAdd] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+    const [newProfilePicture, setNewProfilePicture] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -85,6 +86,53 @@ function Profile() {
         }
     };
 
+    const handleProfilePictureChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setNewProfilePicture(file);
+        }
+    };
+
+    const handleUploadProfilePicture = async (e) => {
+        e.preventDefault();
+
+        if (!newProfilePicture) {
+            setError('Please select a profile picture');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('profilePicture', newProfilePicture);
+
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch('/api/users/update-profile-picture', {
+                method: 'PATCH',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to upload profile picture');
+            }
+
+            const data = await response.json();
+            setUser((prevUser) => ({
+                ...prevUser,
+                profilePicture: data.profilePicture,
+            }));
+            setNewProfilePicture(null);
+            setError(null);
+            setSuccess('Profile picture updated successfully!');
+        } catch (error) {
+            console.error('Error uploading profile picture:', error);
+            setError(error.message);
+            setSuccess(null);
+        }
+    };
+
     const handleBackToDashboard = () => {
         navigate('/dashboard');
     };
@@ -97,12 +145,23 @@ function Profile() {
             {success && <p className="success-message">{success}</p>}
 
             <img
-                src={user.profilePicture || '../images.png'}
+                src={user.profilePicture ? `http://localhost:5000${user.profilePicture}` : '../images.png'}
                 alt="Profile"
                 className="profile-picture"
             />
             <p><strong>Name:</strong> {user.name || 'Loading...'}</p>
             <p><strong>Email:</strong> {user.email || 'Loading...'}</p>
+
+            {/* Profile Picture Upload Section */}
+            <form onSubmit={handleUploadProfilePicture} className="upload-picture-form">
+                <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleProfilePictureChange}
+                    required
+                />
+                <button type="submit" className="upload-button">Upload Profile Picture</button>
+            </form>
 
             <div className="wallet-section">
                 <h2>Wallet</h2>
