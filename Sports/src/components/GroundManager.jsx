@@ -36,14 +36,12 @@ function GroundManager() {
     
     return (
         <div className="ground-manager">
-            {/* Back Button */}
             <button className="back-button" onClick={() => navigate(-1)}>
                 ⬅ Back to Dashboard
             </button>
 
             <h2>Manage Grounds</h2>
 
-            {/* Add Ground Form */}
             <form className="add-ground-form" onSubmit={addGround}>
                 <input
                     type="text"
@@ -74,7 +72,6 @@ function GroundManager() {
                 <button type="submit">Add Ground</button>
             </form>
 
-            {/* Grounds List */}
             <ul className="ground-list">
                 {grounds.map((ground) => (
                     <li key={ground._id} className="ground-item">

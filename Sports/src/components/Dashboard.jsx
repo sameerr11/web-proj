@@ -131,7 +131,7 @@ function Dashboard({ currentView }) {
                                     <li key={match.id} className="match-item">
                                         <strong>{match.teamA}</strong> vs <strong>{match.teamB}</strong> on{' '}
                                         {new Date(match.date).toLocaleDateString()} at {match.venue}{' '}
-                                        <span className="ticket-price">- Rs. {match.ticketPrice}</span>
+                                        <span className="ticket-price">$ {match.ticketPrice}</span>
                                     </li>
                                 ))
                             ) : (

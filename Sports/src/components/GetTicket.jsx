@@ -53,7 +53,7 @@ function GetTicket() {
                                     <p>{new Date(match.date).toLocaleDateString()} - {match.venue}</p>
                                 </div>
                                 <div className="match-actions">
-                                    <span className="ticket-price">Rs. {match.ticketPrice}</span>
+                                    <span className="ticket-price">$ {match.ticketPrice}</span>
                                     <span className="seats-available">Seats: {match.seatsAvailable}</span>
                                     <button
                                         className="buy-now-button"

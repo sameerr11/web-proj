@@ -37,7 +37,6 @@ function MatchScheduler() {
         }
     };
     
-    
     return (
         <div className="match-scheduler-container">
             <button className="back-button" onClick={() => navigate(-1)}>
@@ -105,19 +104,18 @@ function MatchScheduler() {
                     />
                 </div>
                 <div className="form-group">
-    <label>Ticket Price:</label>
-    <input
-        type="number"
-        placeholder="Ticket Price ($)"
-        value={match.ticketPrice}
-        onChange={(e) => {
-            const value = e.target.value === '' ? '' : parseFloat(e.target.value);
-            setMatch({ ...match, ticketPrice: value });
-        }}
-        required
-    />
-</div>
-
+                    <label>Ticket Price:</label>
+                    <input
+                        type="number"
+                        placeholder="Ticket Price ($)"
+                        value={match.ticketPrice}
+                        onChange={(e) => {
+                            const value = e.target.value === '' ? '' : parseFloat(e.target.value);
+                            setMatch({ ...match, ticketPrice: value });
+                        }}
+                        required
+                    />
+                </div>
 
                 <button type="submit" className="match-button">
                     Schedule Match
