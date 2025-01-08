@@ -6,10 +6,7 @@ const UserSchema = new mongoose.Schema({
     password: { type: String, required: true },
     role: { type: String, default: 'manager' },
     profilePicture: { type: String, default: '' },
-    wallet: {
-        balance: { type: Number, default: 0 },
-        currency: { type: String, default: 'USD' },
-    },
+    wallet: {balance: { type: Number, default: 0 },},
 }, {
     timestamps: true,
 });

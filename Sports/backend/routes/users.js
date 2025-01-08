@@ -63,7 +63,7 @@ router.get('/me', authenticate, async (req, res) => {
     }
 });
 
-// Update Wallet Balance
+// Update Wallet Balance (after checkout)
 router.patch('/update-wallet', authenticate, async (req, res) => {
     try {
         const { balance } = req.body;
@@ -79,7 +79,7 @@ router.patch('/update-wallet', authenticate, async (req, res) => {
         }
 
         // Update wallet balance
-        user.wallet.balance = balance;
+        user.wallet.balance = balance; // Deduct the totalAmount from current balance
         await user.save();
 
         res.status(200).json({ message: 'Wallet updated successfully', wallet: user.wallet });
