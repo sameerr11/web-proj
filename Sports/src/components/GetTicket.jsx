@@ -13,7 +13,7 @@ function GetTicket() {
                 const data = await response.json();
                 const matchesWithSeats = data.map(match => ({
                     ...match,
-                    seatsAvailable: match.seatsAvailable || 1000
+                    seatsAvailable: match.seatsAvailable || 100
                 }));
                 setMatches(matchesWithSeats);
             } catch (error) {
