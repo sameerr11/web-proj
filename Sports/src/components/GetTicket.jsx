@@ -24,17 +24,35 @@ function GetTicket() {
         fetchMatches();
     }, []);
 
-    const handleBuyNow = async (matchId) => {
+    const handleBuyNow = async (matchId, ticketPrice) => {
+        const token = localStorage.getItem('token');
+        
         try {
-            // Make a POST request to the backend to update seats
+            // Fetch user data to check balance
+            const userResponse = await fetch('/api/users/me', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            const user = await userResponse.json();
+    
+            if (user.wallet.balance < ticketPrice) {
+                alert('Insufficient balance for this ticket');
+                return;
+            }
+    
+            // Proceed with ticket purchase and wallet deduction
             const response = await fetch(`/api/matches/buy-ticket/${matchId}`, {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
             });
     
             if (response.ok) {
                 const updatedMatch = await response.json();
-    
-                // Update the local state to reflect the change
+                
+                // Update the match data and user wallet balance
                 setMatches((prevMatches) =>
                     prevMatches.map(match =>
                         match._id === updatedMatch.match._id
@@ -42,12 +60,13 @@ function GetTicket() {
                             : match
                     )
                 );
+                alert('Ticket purchased successfully!');
             } else {
-                console.error('Error purchasing ticket:', await response.json());
-                alert('Failed to purchase ticket. Please try again.');
+                const data = await response.json();
+                alert(data.message || 'Failed to purchase ticket');
             }
         } catch (error) {
-            console.error('Error handling Buy Now:', error);
+            console.error('Error purchasing ticket:', error);
             alert('An error occurred. Please try again.');
         }
     };    
@@ -75,7 +94,7 @@ function GetTicket() {
                                     <span className="seats-available">Seats: {match.seatsAvailable}</span>
                                     <button
                                         className="buy-now-button"
-                                        onClick={() => handleBuyNow(match._id)}
+                                        onClick={() => handleBuyNow(match._id, match.ticketPrice)}
                                         disabled={match.seatsAvailable === 0}
                                     >
                                         {match.seatsAvailable > 0 ? 'Buy Now' : 'Sold Out'}
