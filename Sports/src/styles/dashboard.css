@@ -151,9 +151,9 @@
 }
 
 :root {
-    --profile-button-size: 2.5rem; /* Controls the profile picture size */
-    --profile-hover-opacity: 0.85; /* Hover opacity effect */
-    --profile-transition: 0.3s ease-in-out; /* Smooth transitions */
+    --profile-button-size: 2.5rem; 
+    --profile-hover-opacity: 0.85; 
+    --profile-transition: 0.3s ease-in-out; 
 }
 
 .profile-button {
@@ -166,13 +166,13 @@
     border: none;
     cursor: pointer;
     transition: transform var(--profile-transition);
-    outline: none; /* Remove default focus outline */
+    outline: none; 
 }
 
 .profile-button:hover,
 .profile-button:focus {
     opacity: var(--profile-hover-opacity);
-    transform: scale(1.05); /* Slight zoom effect on hover/focus */
+    transform: scale(1.05); 
 }
 
 .profile-button .profile-picture {
@@ -180,14 +180,14 @@
     height: var(--profile-button-size);
     border-radius: 50%;
     margin-right: 0.5rem;
-    object-fit: cover; /* Ensures the image doesn't stretch */
-    border: 2px solid #ddd; /* Optional border for better visibility */
+    object-fit: cover;
+    border: 2px solid #ddd;
     transition: border-color var(--profile-transition);
 }
 
 .profile-button:hover .profile-picture,
 .profile-button:focus .profile-picture {
-    border-color: #aaa; /* Change border color on hover/focus */
+    border-color: #aaa; 
 }
 
 .profile-button span {
@@ -199,6 +199,6 @@
 
 .profile-button:hover span,
 .profile-button:focus span {
-    color: #555; /* Slightly darker text on hover/focus */
+    color: #555; 
 }
 

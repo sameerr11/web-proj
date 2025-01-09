@@ -134,7 +134,7 @@ function Profile() {
     };
 
     const handleBackToDashboard = () => {
-        navigate('/dashboard');
+        navigate('/');
     };
 
     return (
