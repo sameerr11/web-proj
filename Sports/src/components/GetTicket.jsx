@@ -24,15 +24,33 @@ function GetTicket() {
         fetchMatches();
     }, []);
 
-    const handleBuyNow = (matchId) => {
-        setMatches((prevMatches) =>
-            prevMatches.map(match =>
-                match._id === matchId && match.seatsAvailable > 0
-                    ? { ...match, seatsAvailable: match.seatsAvailable - 1 }
-                    : match
-            )
-        );
-    };
+    const handleBuyNow = async (matchId) => {
+        try {
+            // Make a POST request to the backend to update seats
+            const response = await fetch(`/api/matches/buy-ticket/${matchId}`, {
+                method: 'POST',
+            });
+    
+            if (response.ok) {
+                const updatedMatch = await response.json();
+    
+                // Update the local state to reflect the change
+                setMatches((prevMatches) =>
+                    prevMatches.map(match =>
+                        match._id === updatedMatch.match._id
+                            ? { ...match, seatsAvailable: updatedMatch.match.seatsAvailable }
+                            : match
+                    )
+                );
+            } else {
+                console.error('Error purchasing ticket:', await response.json());
+                alert('Failed to purchase ticket. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error handling Buy Now:', error);
+            alert('An error occurred. Please try again.');
+        }
+    };    
 
     return (
         <div className="container">

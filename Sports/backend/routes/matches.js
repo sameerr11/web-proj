@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Match = require('../models/Match');
+const Ground = require('../models/Ground');
 
 // Get all matches
 router.get('/', async (req, res) => {
@@ -14,29 +15,39 @@ router.use((req, res, next) => {
     next();
 });
 
+// Add a new match
 router.post('/', async (req, res) => {
     const { teamA, teamB, venue, date, time, ticketPrice } = req.body;
 
-    console.log('POST body received:', req.body); 
-
     if (!teamA || !teamB || !venue || !date || !time || ticketPrice == null) {
-        console.log('Validation failed. Missing required fields.');
         return res.status(400).json({ message: 'All fields are required, including ticket price.' });
     }
 
     try {
-        const match = new Match({ teamA, teamB, venue, date, time, ticketPrice });
+        // Fetch the ground by venue to get its capacity
+        const ground = await Ground.findOne({ name: venue });
+        if (!ground) {
+            return res.status(404).json({ message: `Ground with name "${venue}" not found.` });
+        }
+
+        // Create a new match with seatsAvailable set to ground capacity
+        const match = new Match({
+            teamA,
+            teamB,
+            venue,
+            date,
+            time,
+            ticketPrice,
+            seatsAvailable: ground.capacity, // Set seatsAvailable to ground capacity
+        });
+
         await match.save();
-        console.log('Match saved:', match); 
         res.status(201).json(match);
     } catch (error) {
-        console.error('Error saving match:', error);
-        res.status(500).json({ message: 'Error saving match', error });
+        console.error('Error creating match:', error);
+        res.status(500).json({ message: 'Error creating match', error });
     }
 });
-
-
-
 
 router.get('/upcoming', async (req, res) => {
     try {
@@ -48,7 +59,7 @@ router.get('/upcoming', async (req, res) => {
     }
 });
 
-// Update seats after buying tickets (optional)
+// Update seats after buying tickets
 router.post('/buy-ticket/:id', async (req, res) => {
     try {
         const match = await Match.findById(req.params.id);
